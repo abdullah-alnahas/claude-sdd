@@ -5,11 +5,15 @@ A Claude Code plugin that enforces disciplined software development: behavioral 
 ## Installation
 
 ```bash
-# Local development
-claude --plugin-dir /path/to/sdd
+# From npm (recommended)
+claude plugins add @abdullah-alnahas/claude-sdd
 
-# Or symlink into Claude plugins directory
-ln -s /path/to/sdd ~/.claude/plugins/sdd
+# From GitHub
+git clone https://github.com/abdullah-alnahas/claude-sdd.git
+claude plugins add ./claude-sdd
+
+# For local development
+claude plugins add /path/to/sdd
 ```
 
 ## What It Does
