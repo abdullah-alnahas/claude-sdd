@@ -1,0 +1,4 @@
+node_modules/
+.sdd-yolo
+.sdd.yaml
+.guardrails-log.jsonl

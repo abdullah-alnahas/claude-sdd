@@ -1,0 +1,20 @@
+{
+  "name": "claude-sdd",
+  "version": "0.1.0",
+  "description": "Spec-Driven Development discipline system for Claude Code — behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, iterative execution loops",
+  "keywords": [
+    "claude-code-plugin",
+    "sdd",
+    "spec-driven-development",
+    "tdd",
+    "guardrails",
+    "architecture",
+    "iterative-execution"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdullah-alnahas/claude-sdd.git"
+  },
+  "author": "abdullah-alnahas"
+}

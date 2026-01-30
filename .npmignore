@@ -1,0 +1,6 @@
+specs/
+scripts/test-*.sh
+.sdd-yolo
+.sdd.yaml
+.git/
+.gitignore

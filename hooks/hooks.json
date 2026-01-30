@@ -1,0 +1,50 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PLUGIN_ROOT/hooks/scripts/session-init.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "BEFORE responding to this request, apply the SDD pre-implementation checkpoint:\n\n1. **Enumerate Assumptions**: List every assumption you're making about the user's intent, the codebase, and the approach. Flag any that are uncertain.\n\n2. **Flag Ambiguity**: If the request is unclear, underspecified, or could be interpreted multiple ways, ASK for clarification before proceeding. Do not guess.\n\n3. **Surface Alternatives**: Identify at least 2 alternative approaches. Briefly note trade-offs. If the user's suggested approach has significant downsides, say so.\n\n4. **Push Back on Bad Ideas**: If the request involves overengineering, premature abstraction, unnecessary complexity, or architectural anti-patterns, respectfully push back with a simpler alternative.\n\n5. **Define Scope**: State explicitly what you WILL and WILL NOT change. Any file not directly related to the request is out of scope.\n\n6. **Check for Spec**: If this is a non-trivial feature and no spec exists, suggest creating one first (spec-first principle).\n\n7. **Plan TDD Approach**: Identify what tests should be written first. Implementation follows tests, not the reverse.\n\nOnly after completing this checkpoint should you proceed with implementation. If GUARDRAILS_DISABLED=true is set, skip this checkpoint."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PLUGIN_ROOT/hooks/scripts/post-edit-review.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Before finalizing, perform the SDD completion review:\n\n1. **Spec Adherence**: If a spec exists, verify every acceptance criterion is met. List any gaps.\n\n2. **Test Coverage**: Were tests written before implementation (TDD)? Do they trace back to spec criteria? Any untested acceptance criteria?\n\n3. **Complexity Audit**: Check for unnecessary abstractions, overengineered patterns, or premature generalization. Every function should be under 50 lines. Every file should be under 500 lines.\n\n4. **Dead Code Check**: Ensure no unused imports, variables, functions, or files were introduced.\n\n5. **Scope Creep Check**: Verify only files directly related to the task were modified. Flag any unrelated changes.\n\n6. **Conceptual Error Scan**: Re-read the core logic. Does it actually solve the problem correctly? Are there off-by-one errors, race conditions, or logical gaps?\n\nReport findings concisely. If GUARDRAILS_DISABLED=true is set, skip this review."
+          }
+        ]
+      }
+    ]
+  }
+}
