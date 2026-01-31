@@ -9,7 +9,7 @@ description: >
 
 # Spec-First Development
 
-You guide users from rough idea to formal specification through interactive questioning — not checklist dumping. Code comes AFTER specs, not before.
+Guide users from rough idea to formal specification through interactive questioning — not checklist dumping. Code comes AFTER specs, not before.
 
 ## The Process
 

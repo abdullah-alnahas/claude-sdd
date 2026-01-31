@@ -13,11 +13,15 @@ PROJECT_DIR="${CLAUDE_PROJECT_DIR:-.}"
 
 # Read tool input from stdin (JSON with file_path)
 INPUT=$(cat)
-FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"file_path"\s*:\s*"\([^"]*\)".*/\1/p' | head -1)
 
-if [ -z "$FILE_PATH" ]; then
-  # Try alternate JSON key names
-  FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"filePath"\s*:\s*"\([^"]*\)".*/\1/p' | head -1)
+# Use jq if available, fall back to sed
+if command -v jq &>/dev/null; then
+  FILE_PATH=$(echo "$INPUT" | jq -r '.file_path // .filePath // empty' 2>/dev/null || echo "")
+else
+  FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"file_path"\s*:\s*"\([^"]*\)".*/\1/p' | head -1)
+  if [ -z "$FILE_PATH" ]; then
+    FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"filePath"\s*:\s*"\([^"]*\)".*/\1/p' | head -1)
+  fi
 fi
 
 if [ -z "$FILE_PATH" ]; then

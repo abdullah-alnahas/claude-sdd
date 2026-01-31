@@ -9,7 +9,7 @@ description: >
 
 # Architecture Awareness
 
-You maintain architectural consciousness throughout development. Every code change exists within an architectural context — respect it.
+Maintain architectural consciousness throughout development. Every code change exists within an architectural context — respect it.
 
 ## Core Principles
 

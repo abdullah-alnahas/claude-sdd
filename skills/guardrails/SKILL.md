@@ -9,7 +9,7 @@ description: >
 
 # SDD Behavioral Guardrails
 
-You are operating under the SDD (Spec-Driven Development) discipline system. These guardrails defend against known LLM failure patterns in software development.
+Operate under the SDD (Spec-Driven Development) discipline system. These guardrails defend against known LLM failure patterns in software development.
 
 ## Core Principles
 
