@@ -1,6 +1,11 @@
 ---
 name: sdd-guardrails
 description: Show guardrail status, toggle individual guardrails, and view configuration
+argument-hint: "[enable|disable <name>]"
+allowed-tools:
+  - Read
+  - Write
+  - Bash
 ---
 
 # /sdd-guardrails

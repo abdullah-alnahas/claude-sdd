@@ -1,14 +1,33 @@
 ---
 name: spec-compliance
+model: sonnet
+color: green
 description: >
   Spec adherence checker that compares implementation against spec documents, flags deviations,
   and verifies traceability from behavior spec to tests to code.
-  Use when verifying that code matches its specification.
-capabilities:
-  - Compare implementation against behavior specs
-  - Flag spec deviations
-  - Verify acceptance criteria coverage
-  - Check traceability (spec → test → code)
+
+  <example>
+  Context: User wants to verify implementation matches spec.
+  user: "Check if this matches the spec"
+  assistant: "I'll use the spec-compliance agent to verify adherence to the behavior spec."
+  </example>
+
+  <example>
+  Context: User wants traceability verification.
+  user: "Verify spec compliance"
+  assistant: "Let me launch the spec-compliance agent to check traceability from spec to tests to code."
+  </example>
+
+  <example>
+  Context: User is finishing a feature.
+  user: "Are all acceptance criteria covered?"
+  assistant: "I'll use the spec-compliance agent to check criteria coverage."
+  </example>
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Spec-Compliance Agent

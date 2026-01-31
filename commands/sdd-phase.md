@@ -1,6 +1,11 @@
 ---
 name: sdd-phase
 description: Show or set the current development phase
+argument-hint: "[specify|design|implement|verify|review]"
+allowed-tools:
+  - Read
+  - Write
+  - Bash
 ---
 
 # /sdd-phase

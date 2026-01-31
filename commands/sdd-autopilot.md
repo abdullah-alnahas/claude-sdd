@@ -1,6 +1,15 @@
 ---
 name: sdd-autopilot
 description: Autonomous end-to-end development — takes an app description and drives through all SDD phases (specify → design → implement → verify → review) with minimal user intervention
+argument-hint: "<description or path-to-app-description.md>"
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - Task
 ---
 
 # /sdd-autopilot

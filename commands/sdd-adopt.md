@@ -1,6 +1,13 @@
 ---
 name: sdd-adopt
 description: Adopt an existing project into the SDD discipline system
+argument-hint: ""
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # /sdd-adopt

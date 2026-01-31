@@ -1,14 +1,33 @@
 ---
 name: security-reviewer
+model: sonnet
+color: yellow
 description: >
   Security analysis agent that reviews code for OWASP Top 10 vulnerabilities, input validation gaps,
-  auth/authz issues, and injection risks. Use when reviewing code for security concerns.
-capabilities:
-  - OWASP Top 10 vulnerability detection
-  - Input validation review
-  - Authentication and authorization review
-  - Injection detection (SQL, command, XSS)
-  - Dependency risk awareness
+  auth/authz issues, and injection risks.
+
+  <example>
+  Context: User wants a security review.
+  user: "Review this for security vulnerabilities"
+  assistant: "I'll use the security-reviewer agent to check for vulnerabilities."
+  </example>
+
+  <example>
+  Context: User is concerned about injection risks.
+  user: "Check for injection risks in this code"
+  assistant: "Let me launch the security-reviewer agent to analyze injection surfaces."
+  </example>
+
+  <example>
+  Context: Pre-production security check.
+  user: "Is this code secure enough for production?"
+  assistant: "I'll use the security-reviewer agent to do a security analysis."
+  </example>
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Security Reviewer Agent

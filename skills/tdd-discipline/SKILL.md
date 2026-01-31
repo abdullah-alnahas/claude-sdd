@@ -1,9 +1,9 @@
 ---
 name: TDD Discipline
 description: >
-  Test-driven development enforcement — Red/Green/Refactor cycle, test co-location, traceability from behavior spec to test to code.
-  Use when writing tests, discussing TDD, coverage, verification, or validation.
-version: 1.0.0
+  This skill enforces test-driven development discipline with the Red/Green/Refactor cycle and traceability
+  from behavior spec to test to code. It should be used when the user asks to write tests, add test coverage,
+  discuss testing strategy, or says "how should I test this?", "add tests for this," or "write tests first."
 ---
 
 # TDD Discipline

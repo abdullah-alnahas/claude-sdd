@@ -1,10 +1,10 @@
 ---
 name: SDD Guardrails
 description: >
-  Core behavioral guardrails that defend against 12 common LLM failure modes during software development.
-  Use when implementing, building, fixing, refactoring, adding, changing, or modifying code.
-  Activates automatically to enforce disciplined development practices.
-version: 1.0.0
+  This skill enforces core behavioral guardrails defending against 12 common LLM failure modes during
+  software development. It should be used when the user asks to implement, build, write, fix, refactor,
+  add, change, or modify code — essentially any coding task. It enforces honesty over agreement, scope
+  discipline, simplicity, and verification before claiming completion.
 ---
 
 # SDD Behavioral Guardrails

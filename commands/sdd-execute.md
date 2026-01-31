@@ -1,6 +1,15 @@
 ---
 name: sdd-execute
 description: Start an iterative execution loop — implement with TDD, verify against spec, fix gaps, repeat
+argument-hint: "[--max-iterations <n>] [--criteria <description>]"
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - Task
 ---
 
 # /sdd-execute

@@ -1,13 +1,33 @@
 ---
 name: simplifier
+model: sonnet
+color: cyan
 description: >
   Complexity reducer that proposes simpler alternatives, identifies unnecessary abstractions,
   and flags overengineering. Use when reviewing code for simplicity or after implementation.
-capabilities:
-  - Propose simpler alternatives
-  - Identify unnecessary abstractions
-  - Flag overengineering
-  - Reduce code volume while preserving behavior
+
+  <example>
+  Context: User wants to reduce complexity.
+  user: "Simplify this code"
+  assistant: "I'll use the simplifier agent to find complexity reduction opportunities."
+  </example>
+
+  <example>
+  Context: User suspects overengineering.
+  user: "Is this overengineered?"
+  assistant: "Let me launch the simplifier agent to check for unnecessary abstractions."
+  </example>
+
+  <example>
+  Context: Post-implementation cleanup.
+  user: "Can this be done with less code?"
+  assistant: "I'll use the simplifier agent to propose simpler alternatives."
+  </example>
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Simplifier Agent

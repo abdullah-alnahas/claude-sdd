@@ -1,6 +1,15 @@
 ---
 name: sdd-review
 description: On-demand self-review using critic and simplifier agents with iterative fix cycles
+argument-hint: "[--max-iterations <n>]"
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - Task
 ---
 
 # /sdd-review

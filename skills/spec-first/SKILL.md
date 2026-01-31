@@ -1,10 +1,10 @@
 ---
 name: Spec-First Development
 description: >
-  Interactive specification development that turns rough ideas into formal documents before code is written.
-  Use when starting a new project, new feature, creating specs, plans, adopting an existing project,
-  or when the user says "I want to build/create something."
-version: 1.0.0
+  This skill guides interactive specification development, turning rough ideas into formal documents before
+  any code is written. It should be used when the user is starting a new project or feature, wants to create
+  specs or plans, is adopting an existing project, or says things like "I want to build something," "let's
+  plan this out," "write a spec for this," or "let's design this first."
 ---
 
 # Spec-First Development

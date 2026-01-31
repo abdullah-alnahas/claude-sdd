@@ -1,14 +1,33 @@
 ---
 name: critic
+model: sonnet
+color: red
 description: >
   Adversarial code reviewer that finds logical errors, invalid assumptions, spec drift, and requirement gaps.
   Use when you need an honest, direct assessment of code quality and correctness.
-capabilities:
-  - Logical error detection
-  - Assumption validation
-  - Spec drift detection
-  - Requirement coverage checking
-  - Complexity assessment
+
+  <example>
+  Context: User has completed implementing a feature.
+  user: "Review this code for bugs and logical errors"
+  assistant: "I'll use the critic agent to do an adversarial review of your code."
+  </example>
+
+  <example>
+  Context: User wants a critical assessment before merging.
+  user: "Find what's wrong with this implementation"
+  assistant: "Let me use the critic agent to identify issues."
+  </example>
+
+  <example>
+  Context: User suspects something is off.
+  user: "Do a critical review of these changes"
+  assistant: "I'll launch the critic agent for a thorough adversarial review."
+  </example>
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Critic Agent

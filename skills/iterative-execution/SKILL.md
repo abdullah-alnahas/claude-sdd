@@ -1,9 +1,10 @@
 ---
 name: Iterative Execution
 description: >
-  Disciplined implement→verify→fix cycles for delivering against specs. Use when implementing features,
-  executing specs, making things work, iterating until specs are satisfied, or running execution loops.
-version: 1.0.0
+  This skill provides disciplined implement-verify-fix cycles for delivering features against specifications.
+  It should be used when the user asks to implement a feature from a spec, when implementation needs iterating
+  to match requirements, or when the user says "make this work," "implement this spec," "keep going until all
+  tests pass," or "it's not matching the spec yet."
 ---
 
 # Iterative Execution

@@ -1,6 +1,10 @@
 ---
 name: sdd-yolo
 description: Temporarily disable all SDD guardrails for this session
+argument-hint: ""
+allowed-tools:
+  - Write
+  - Bash
 ---
 
 # /sdd-yolo

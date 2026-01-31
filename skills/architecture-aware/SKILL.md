@@ -1,9 +1,10 @@
 ---
 name: Architecture Awareness
 description: >
-  Provides architecture consciousness during development — integration patterns, anti-patterns, and ADR guidance.
-  Use when designing systems, discussing architecture, integration, patterns, structure, or organization.
-version: 1.0.0
+  This skill provides architecture consciousness during development, including integration patterns,
+  anti-patterns, and ADR guidance. It should be used when the user asks how to structure or organize code,
+  discusses architecture or design patterns, plans integrations between components, or asks
+  "how should I structure this?", "what pattern should I use?", or "should I split this into services?"
 ---
 
 # Architecture Awareness
