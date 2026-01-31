@@ -1,4 +1,5 @@
 ---
+name: critic
 description: >
   Adversarial code reviewer that finds logical errors, invalid assumptions, spec drift, and requirement gaps.
   Use when you need an honest, direct assessment of code quality and correctness.

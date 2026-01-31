@@ -1,4 +1,5 @@
 ---
+name: simplifier
 description: >
   Complexity reducer that proposes simpler alternatives, identifies unnecessary abstractions,
   and flags overengineering. Use when reviewing code for simplicity or after implementation.

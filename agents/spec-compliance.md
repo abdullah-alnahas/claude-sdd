@@ -1,4 +1,5 @@
 ---
+name: spec-compliance
 description: >
   Spec adherence checker that compares implementation against spec documents, flags deviations,
   and verifies traceability from behavior spec to tests to code.
@@ -46,6 +47,13 @@ You methodically compare what was specified against what was built. Every accept
 ### Summary
 [X of Y criteria satisfied. Z deviations found.]
 ```
+
+## No Spec Available
+
+If no behavior spec exists for the code under review:
+1. Report clearly: "No behavior spec found for this code."
+2. Suggest creating one: "Run `/sdd-phase specify` or use the spec-first skill to create a behavior spec before verifying compliance."
+3. Do NOT attempt to invent criteria — without a spec, compliance checking is not meaningful.
 
 ## Principles
 

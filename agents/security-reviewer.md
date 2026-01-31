@@ -1,4 +1,5 @@
 ---
+name: security-reviewer
 description: >
   Security analysis agent that reviews code for OWASP Top 10 vulnerabilities, input validation gaps,
   auth/authz issues, and injection risks. Use when reviewing code for security concerns.
