@@ -13,7 +13,9 @@ YOLO_FLAG="$PROJECT_DIR/.sdd-yolo"
 if [ -f "$YOLO_FLAG" ]; then
   echo "SDD: Previous YOLO mode detected — clearing flag, guardrails disabled for this session" >&2
   # Remove yolo flag (auto-clears on session start)
-  rm -f "$YOLO_FLAG"
+  if ! rm -f "$YOLO_FLAG" 2>/dev/null; then
+    echo "SDD WARNING: Could not remove yolo flag at $YOLO_FLAG — guardrails may remain disabled next session" >&2
+  fi
   if [ -n "$ENV_FILE" ]; then
     echo "GUARDRAILS_DISABLED=true" >> "$ENV_FILE"
     echo "SDD_YOLO_CLEARED=true" >> "$ENV_FILE"

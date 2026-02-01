@@ -9,11 +9,13 @@ FAIL=0
 check() {
   local desc="$1"
   shift
-  if "$@" >/dev/null 2>&1; then
+  local output
+  if output=$("$@" 2>&1); then
     echo "  ✓ $desc"
     PASS=$((PASS + 1))
   else
     echo "  ✗ $desc"
+    [ -n "$output" ] && echo "    $output"
     FAIL=$((FAIL + 1))
   fi
 }
@@ -30,7 +32,7 @@ for skill in "${SKILLS[@]}"; do
 
   check "Directory exists" test -d "$SKILL_DIR"
   check "SKILL.md exists" test -f "$SKILL_DIR/SKILL.md"
-  check "SKILL.md has frontmatter" grep -q "^---" "$SKILL_DIR/SKILL.md"
+  check "SKILL.md has frontmatter" bash -c "sed -n '1p' \"$SKILL_DIR/SKILL.md\" | grep -q '^---'"
   check "SKILL.md has name field" grep -q "^name:" "$SKILL_DIR/SKILL.md"
   check "SKILL.md has description field" grep -q "^description:" "$SKILL_DIR/SKILL.md"
 

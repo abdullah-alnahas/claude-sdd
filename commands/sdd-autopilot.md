@@ -75,7 +75,8 @@ Use the iterative execution outer loop: implement → verify → fix gaps → re
 2. Invoke **spec-compliance agent** — compare implementation against behavior-spec.md
 3. Invoke **critic agent** — find logical errors, assumption issues
 4. Invoke **security-reviewer agent** — check for vulnerabilities
-5. Collect all findings
+5. If performance optimization was part of the spec, invoke **performance-reviewer agent**
+6. Collect all findings
 
 **Transition**: "Verify phase complete — N findings (X critical, Y high, Z medium). Entering Review phase."
 

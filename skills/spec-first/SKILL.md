@@ -60,6 +60,12 @@ For existing projects, use the adoption flow instead of starting from scratch. S
 - **Documents are living**: Specs evolve. That's fine. But they must exist before code.
 - **Lean templates**: The templates are starting points, not forms to fill out
 
+## Related Skills
+
+- **architecture-aware** — for deeper architectural guidance during Stage 4
+- **tdd-discipline** — for test planning from behavior specs (use `references/templates/test-plan.md`)
+- **guardrails** — enforces spec-first as a pre-implementation check
+
 ## References
 
 See: `references/interactive-spec-process.md` — Detailed questioning flow

@@ -2,7 +2,7 @@
 name: Performance Optimization
 description: >
   This skill enforces disciplined performance optimization practices defending against convenience bias,
-  localization failure, and correctness regressions. It should be used when the user asks to optimize,
+  bottleneck mis-targeting, and correctness regressions. It should be used when the user asks to optimize,
   speed up, improve performance, reduce runtime, or make code faster — any task where the goal is better
   performance without breaking correctness.
 ---
@@ -49,10 +49,16 @@ Performance optimization is investigative work. You must understand the problem 
 ## Convenience Bias Checklist
 
 Before submitting a performance patch, verify it is NOT:
-- [ ] An input-specific hack that only helps one case
-- [ ] A micro-optimization with unmeasurable impact
-- [ ] A change that trades correctness risk for speed
-- [ ] A surface-level tweak when a deeper structural fix exists
+- An input-specific hack that only helps one case
+- A micro-optimization with unmeasurable impact
+- A change that trades correctness risk for speed
+- A surface-level tweak when a deeper structural fix exists
+
+## Related Skills
+
+- **guardrails** — enforces correctness-first and verify-before-claiming during optimization
+- **iterative-execution** — the outer verify-fix cycle for measuring and iterating on improvements
+- **tdd-discipline** — ensures test suite is maintained through optimization changes
 
 ## References
 

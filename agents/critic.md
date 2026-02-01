@@ -70,8 +70,4 @@ You are an adversarial reviewer. Your job is to find what's wrong, not confirm w
 
 ## Performance Patch Review
 
-When reviewing performance optimization patches, additionally check:
-- **Bottleneck targeting**: Does the patch address the actual bottleneck, or a convenient but less impactful location?
-- **Convenience bias**: Is this a structural improvement (algorithm, data structure) or a shallow, input-specific hack that's fragile and hard to maintain?
-- **Measured improvement**: Is the speedup quantified with before/after evidence, or just assumed?
-- **Correctness preservation**: Do all existing tests still pass after the optimization?
+When a patch includes performance changes, check for correctness regressions and logical errors as usual. For dedicated performance analysis (bottleneck targeting, convenience bias, measured speedup), defer to the **performance-reviewer** agent.

@@ -54,11 +54,7 @@ Use whatever is available, in order of preference:
 
 ## Performance Optimization Tasks
 
-When the task is performance optimization, the verification step MUST include:
-1. **Timing comparison** — measure before vs after on the actual workload. Quantify the speedup.
-2. **Test suite pass** — correctness preserved. Any new test failure invalidates the optimization.
-3. **Profile comparison** — confirm the bottleneck was actually addressed, not just masked or shifted elsewhere.
-4. **Convenience bias check** — is this a structural improvement or a shallow, input-specific hack? If the latter, iterate.
+For performance optimization tasks, the verification step must additionally include timing comparison, profile comparison, and convenience bias checks. Follow the **performance-optimization** skill for the full workflow.
 
 ## Honesty Rules
 
@@ -66,6 +62,15 @@ When the task is performance optimization, the verification step MUST include:
 - **Never skip a failing test.** Fix the code or fix the test (only if the test is genuinely wrong).
 - **Never weaken criteria to match output.** The spec defines done, not the implementation.
 - **Be honest about partial completion.** "3 of 5 criteria met, blocked on X" is better than a false "done."
+
+## References
+
+## Related Skills
+
+- **tdd-discipline** — the inner discipline used within each implementation step
+- **spec-first** — produces the specs that define completion criteria
+- **guardrails** — the overarching discipline layer
+- **performance-optimization** — specialized verification for performance tasks
 
 ## References
 

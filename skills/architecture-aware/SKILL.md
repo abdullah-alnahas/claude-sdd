@@ -4,7 +4,8 @@ description: >
   This skill provides architecture consciousness during development, including integration patterns,
   anti-patterns, and ADR guidance. It should be used when the user asks how to structure or organize code,
   discusses architecture or design patterns, plans integrations between components, or asks
-  "how should I structure this?", "what pattern should I use?", or "should I split this into services?"
+  "how should I structure this?", "what pattern should I use?", "should I split this into services?",
+  "should I write an ADR?", or "document this decision."
 ---
 
 # Architecture Awareness
@@ -22,13 +23,13 @@ Every pattern has trade-offs. State the specific benefit for THIS codebase, not 
 ### Record Significant Decisions
 If a decision is hard to reverse or affects multiple components, it deserves an ADR (Architecture Decision Record).
 
-## When to Engage
+## When an Architecture Question Arises
 
-- User asks "how should I structure this?"
-- Adding a new component to an existing system
-- Introducing a new technology or pattern
-- Changing how components communicate
-- Anything that touches 3+ modules/services
+1. **Survey existing patterns** — read the codebase to understand current conventions, patterns, and structure
+2. **Evaluate fit** — does the proposed approach align with or diverge from existing patterns? Divergence needs justification.
+3. **State trade-offs explicitly** — every option has costs and benefits. Name them concretely for this codebase.
+4. **Decide whether an ADR is warranted** — write one if the decision is hard to reverse or affects multiple components
+5. **Document if yes** — use the ADR template from `references/adr-guide.md`
 
 ## What to Check
 
@@ -36,6 +37,11 @@ If a decision is hard to reverse or affects multiple components, it deserves an 
 2. **Integration points**: How will new code connect to existing code?
 3. **Coupling**: Are we creating tight coupling between components?
 4. **Consistency**: Does this follow or violate established conventions?
+
+## Related Skills
+
+- **spec-first** — architecture decisions emerge during Stage 4 (Architecture)
+- **guardrails** — enforces architectural consistency as part of scope discipline
 
 ## References
 

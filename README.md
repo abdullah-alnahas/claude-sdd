@@ -41,6 +41,9 @@ Red → Green → Refactor enforcement. Test traceability from behavior spec to 
 ### Iterative Execution
 Disciplined delivery loops: implement with TDD → verify against spec → fix gaps → repeat. TDD is the inner discipline (how you write code), iterative execution is the outer cycle (how you deliver features).
 
+### Performance Optimization
+Profile-first discipline for performance work. Defends against convenience bias (shallow, input-specific hacks), bottleneck mis-targeting, and correctness regressions during optimization.
+
 ## Commands
 
 | Command | Purpose |
@@ -61,6 +64,7 @@ Disciplined delivery loops: implement with TDD → verify against spec → fix g
 | **simplifier** | Complexity reducer — proposes simpler alternatives |
 | **spec-compliance** | Spec adherence checker — verifies traceability (spec → test → code) |
 | **security-reviewer** | Security analysis — OWASP Top 10, input validation, auth review |
+| **performance-reviewer** | Performance optimization reviewer — validates patches for bottleneck targeting, convenience bias, measured improvement |
 
 ## Configuration
 
@@ -107,9 +111,9 @@ whitelist:
 ## Self-Test
 
 ```bash
-bash sdd/scripts/verify-hooks.sh
-bash sdd/scripts/verify-skills.sh
-bash sdd/scripts/verify-commands.sh
+bash scripts/verify-hooks.sh
+bash scripts/verify-skills.sh
+bash scripts/verify-commands.sh
 ```
 
 ## Development Phases

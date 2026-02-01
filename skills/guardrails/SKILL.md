@@ -51,14 +51,7 @@ Before writing ANY implementation code, you MUST:
 
 ## Performance Changes
 
-When the task is performance optimization:
-
-1. **Profile first** — identify the actual bottleneck with evidence (timing, profiler output). Never guess.
-2. **Verify correctness after every change** — run the full test suite. Any test regression invalidates the optimization.
-3. **Measure improvement quantitatively** — compare before/after timings. No "it should be faster" — prove it.
-4. **Prefer structural improvements** — algorithmic and data-structure changes over micro-optimizations or input-specific hacks.
-5. **Never sacrifice correctness for speed** — a faster but broken program is not an optimization, it's a defect.
-6. **Watch for convenience bias** — small, surface-level tweaks that are easy to produce but fragile and hard to maintain. Push for deeper fixes.
+For performance optimization tasks, follow the **performance-optimization** skill for the full workflow (profile-first discipline, convenience bias detection, measured improvement). The core rule: never sacrifice correctness for speed.
 
 ## Completion Review
 
@@ -67,13 +60,23 @@ Before claiming work is done:
 1. Re-read the original request
 2. Verify every requirement is met
 3. Check for dead code you introduced
-4. Check function/file length limits (50/500 lines)
+4. Check function/file length guidelines (aim for ~50/~500 lines — adapt to project conventions)
 5. Verify no unrelated files were modified
 6. Run available tests
 
 ## Failure Mode Awareness
 
 Consult the failure patterns reference for detailed detection and response guidance for all 12 failure modes.
+
+## Related Skills
+
+- **spec-first** — for the pre-implementation spec check (step 6 above)
+- **tdd-discipline** — for the TDD inner discipline during implementation
+- **iterative-execution** — for the implement-verify-fix outer cycle
+- **performance-optimization** — for performance-specific guardrails
+- **architecture-aware** — for architectural consistency checks
+
+## References
 
 See: `references/failure-patterns.md`
 See: `references/pushback-guide.md`

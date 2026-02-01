@@ -9,11 +9,13 @@ FAIL=0
 check() {
   local desc="$1"
   shift
-  if "$@" >/dev/null 2>&1; then
+  local output
+  if output=$("$@" 2>&1); then
     echo "  ✓ $desc"
     PASS=$((PASS + 1))
   else
     echo "  ✗ $desc"
+    [ -n "$output" ] && echo "    $output"
     FAIL=$((FAIL + 1))
   fi
 }
@@ -25,32 +27,32 @@ echo "─────────────────────"
 echo ""
 echo "hooks.json:"
 check "File exists" test -f "$PLUGIN_DIR/hooks/hooks.json"
-check "Valid JSON" python3 -c "import json; json.load(open('$PLUGIN_DIR/hooks/hooks.json'))"
+check "Valid JSON" python3 -c "import json, sys; json.load(open(sys.argv[1]))" "$PLUGIN_DIR/hooks/hooks.json"
 check "Has hooks wrapper" python3 -c "
-import json
-d = json.load(open('$PLUGIN_DIR/hooks/hooks.json'))
+import json, sys
+d = json.load(open(sys.argv[1]))
 assert 'hooks' in d, 'Missing hooks key'
-"
+" "$PLUGIN_DIR/hooks/hooks.json"
 check "Has SessionStart hook" python3 -c "
-import json
-d = json.load(open('$PLUGIN_DIR/hooks/hooks.json'))
+import json, sys
+d = json.load(open(sys.argv[1]))
 assert 'SessionStart' in d['hooks']
-"
+" "$PLUGIN_DIR/hooks/hooks.json"
 check "Has UserPromptSubmit hook" python3 -c "
-import json
-d = json.load(open('$PLUGIN_DIR/hooks/hooks.json'))
+import json, sys
+d = json.load(open(sys.argv[1]))
 assert 'UserPromptSubmit' in d['hooks']
-"
+" "$PLUGIN_DIR/hooks/hooks.json"
 check "Has PostToolUse hook" python3 -c "
-import json
-d = json.load(open('$PLUGIN_DIR/hooks/hooks.json'))
+import json, sys
+d = json.load(open(sys.argv[1]))
 assert 'PostToolUse' in d['hooks']
-"
+" "$PLUGIN_DIR/hooks/hooks.json"
 check "Has Stop hook" python3 -c "
-import json
-d = json.load(open('$PLUGIN_DIR/hooks/hooks.json'))
+import json, sys
+d = json.load(open(sys.argv[1]))
 assert 'Stop' in d['hooks']
-"
+" "$PLUGIN_DIR/hooks/hooks.json"
 
 # Check scripts exist and are executable
 echo ""

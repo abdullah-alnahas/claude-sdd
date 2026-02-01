@@ -27,10 +27,11 @@ Trigger an on-demand review of recent work using the critic and simplifier agent
 2. Run the **critic agent** — find logical errors, spec drift, assumption issues
 3. Run the **simplifier agent** — find unnecessary complexity
 4. If spec documents exist, run the **spec-compliance agent**
-5. Present findings with severity levels
-6. Offer to auto-fix issues found
-7. If fixes are made (using TDD — write test for the fix first if applicable), re-review
-8. Repeat until no critical issues remain or max iterations reached
+5. If the changes involve performance optimization, run the **performance-reviewer agent**
+6. Present findings with severity levels
+7. Offer to auto-fix issues found
+8. If fixes are made (using TDD — write a test for the fix first), re-review
+9. Repeat until no critical issues remain or max iterations reached
 
 ## Output Format
 

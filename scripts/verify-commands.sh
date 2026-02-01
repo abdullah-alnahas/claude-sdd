@@ -9,11 +9,13 @@ FAIL=0
 check() {
   local desc="$1"
   shift
-  if "$@" >/dev/null 2>&1; then
+  local output
+  if output=$("$@" 2>&1); then
     echo "  ✓ $desc"
     PASS=$((PASS + 1))
   else
     echo "  ✗ $desc"
+    [ -n "$output" ] && echo "    $output"
     FAIL=$((FAIL + 1))
   fi
 }
@@ -29,7 +31,7 @@ for cmd in "${COMMANDS[@]}"; do
   CMD_FILE="$PLUGIN_DIR/commands/$cmd.md"
 
   check "File exists" test -f "$CMD_FILE"
-  check "Has frontmatter" grep -q "^---" "$CMD_FILE"
+  check "Has frontmatter" bash -c "sed -n '1p' \"$CMD_FILE\" | grep -q '^---'"
   check "Has name field" grep -q "^name:" "$CMD_FILE"
   check "Has description field" grep -q "^description:" "$CMD_FILE"
   check "Is non-empty (>100 chars)" test "$(wc -c < "$CMD_FILE")" -gt 100

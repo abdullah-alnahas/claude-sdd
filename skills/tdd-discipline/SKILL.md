@@ -3,7 +3,8 @@ name: TDD Discipline
 description: >
   This skill enforces test-driven development discipline with the Red/Green/Refactor cycle and traceability
   from behavior spec to test to code. It should be used when the user asks to write tests, add test coverage,
-  discuss testing strategy, or says "how should I test this?", "add tests for this," or "write tests first."
+  discuss testing strategy, fix a bug, or says "how should I test this?", "add tests for this," "write tests first,"
+  "fix this bug," or "debug this."
 ---
 
 # TDD Discipline
@@ -20,7 +21,7 @@ This cycle applies at every level: unit, integration, e2e.
 
 ## Relationship to Iterative Execution
 
-TDD is the **inner discipline** — how you write each piece of code. Iterative execution is the **outer cycle** — how you deliver a complete feature against a spec. Every "implement" step in the iterative execution cycle uses TDD internally. They are complementary: TDD ensures code correctness at the unit level; iterative execution ensures spec satisfaction at the feature level.
+TDD is the **inner discipline** — how you write each piece of code. Iterative execution is the **outer cycle** — how you deliver a complete feature against a spec. They are complementary: TDD ensures correctness at the unit level; iterative execution ensures spec satisfaction at the feature level. See the **iterative-execution** skill for the full outer cycle.
 
 ## When TDD Adds Value
 
@@ -48,6 +49,14 @@ Code: FormHandler.submit()
 ```
 
 This chain ensures nothing is built without a reason and nothing specified goes untested. If a test has no spec criterion, either add the criterion to the spec or question whether the test is needed. If a spec criterion has no test, that is a finding — even if the code works.
+
+## References
+
+## Related Skills
+
+- **iterative-execution** — the outer delivery cycle that uses TDD internally
+- **spec-first** — produces behavior specs that drive test design (see `spec-first/references/templates/test-plan.md`)
+- **guardrails** — enforces TDD during implementation
 
 ## References
 

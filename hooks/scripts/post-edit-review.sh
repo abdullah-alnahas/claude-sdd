@@ -10,22 +10,36 @@ if [ "${GUARDRAILS_DISABLED:-false}" = "true" ]; then
 fi
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-.}"
+# Resolve to absolute path to avoid relative vs absolute mismatch
+if command -v realpath &>/dev/null; then
+  PROJECT_DIR=$(realpath "$PROJECT_DIR" 2>/dev/null || echo "$PROJECT_DIR")
+fi
 
 # Read tool input from stdin (JSON with file_path)
 INPUT=$(cat)
 
 # Use jq if available, fall back to sed
 if command -v jq &>/dev/null; then
-  FILE_PATH=$(echo "$INPUT" | jq -r '.file_path // .filePath // empty' 2>/dev/null || echo "")
+  FILE_PATH=$(echo "$INPUT" | jq -r '.file_path // .filePath // empty' 2>/dev/null)
+  if [ $? -ne 0 ] || [ -z "$FILE_PATH" ]; then
+    echo "SDD: post-edit-review skipped — could not parse file_path from hook input" >&2
+    exit 0
+  fi
 else
-  FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"file_path"\s*:\s*"\([^"]*\)".*/\1/p' | head -1)
+  FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"file_path"[ \t]*:[ \t]*"\([^"]*\)".*/\1/p' | head -1)
   if [ -z "$FILE_PATH" ]; then
-    FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"filePath"\s*:\s*"\([^"]*\)".*/\1/p' | head -1)
+    FILE_PATH=$(echo "$INPUT" | sed -n 's/.*"filePath"[ \t]*:[ \t]*"\([^"]*\)".*/\1/p' | head -1)
   fi
 fi
 
 if [ -z "$FILE_PATH" ]; then
+  echo "SDD: post-edit-review skipped — no file_path in hook input" >&2
   exit 0
+fi
+
+# Resolve file path to absolute for consistent comparison
+if command -v realpath &>/dev/null; then
+  FILE_PATH=$(realpath "$FILE_PATH" 2>/dev/null || echo "$FILE_PATH")
 fi
 
 # Check if inside project directory
@@ -39,7 +53,7 @@ esac
 
 # Check git status for unrelated modifications
 if command -v git &>/dev/null && [ -d "$PROJECT_DIR/.git" ]; then
-  MODIFIED_COUNT=$(cd "$PROJECT_DIR" && git diff --name-only 2>/dev/null | wc -l)
+  MODIFIED_COUNT=$(cd "$PROJECT_DIR" && git diff --name-only 2>/dev/null | wc -l | tr -d ' ')
   if [ "$MODIFIED_COUNT" -gt 10 ]; then
     echo "SDD SCOPE WARNING: $MODIFIED_COUNT files modified — possible scope creep. Review changes with 'git diff --stat'" >&2
     exit 2

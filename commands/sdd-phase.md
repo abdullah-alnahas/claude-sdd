@@ -45,7 +45,7 @@ Phase state is stored in `.sdd-phase` in the project root. This file contains a 
    - `design` → architecture-aware skill
    - `implement` → TDD discipline + iterative execution skills
    - `verify` → iterative execution (verification step)
-   - `review` → all agents (critic, simplifier, spec-compliance, security-reviewer)
+   - `review` → all agents (critic, simplifier, spec-compliance, security-reviewer, performance-reviewer)
 
 ## Output Format
 
@@ -54,6 +54,14 @@ SDD Phase: implement
 ─────────────────────
 Focus: TDD cycles within iterative execution — write tests first, then minimal code to pass
 
-Available skills: tdd-discipline, iterative-execution, guardrails
-Available agents: critic, simplifier, spec-compliance, security-reviewer
+Available skills: tdd-discipline, iterative-execution, guardrails, performance-optimization
+Recommended agents: critic, spec-compliance
+All agents: critic, simplifier, spec-compliance, security-reviewer, performance-reviewer
 ```
+
+Phase-specific agent recommendations:
+- **specify**: spec-compliance (verify spec completeness)
+- **design**: critic (architectural review), simplifier
+- **implement**: spec-compliance (traceability), critic (logic review)
+- **verify**: security-reviewer, performance-reviewer, spec-compliance
+- **review**: all agents
