@@ -49,6 +49,17 @@ Before writing ANY implementation code, you MUST:
 - Do not create abstractions for single-use patterns
 - Track every file you modify — justify each one
 
+## Performance Changes
+
+When the task is performance optimization:
+
+1. **Profile first** — identify the actual bottleneck with evidence (timing, profiler output). Never guess.
+2. **Verify correctness after every change** — run the full test suite. Any test regression invalidates the optimization.
+3. **Measure improvement quantitatively** — compare before/after timings. No "it should be faster" — prove it.
+4. **Prefer structural improvements** — algorithmic and data-structure changes over micro-optimizations or input-specific hacks.
+5. **Never sacrifice correctness for speed** — a faster but broken program is not an optimization, it's a defect.
+6. **Watch for convenience bias** — small, surface-level tweaks that are easy to produce but fragile and hard to maintain. Push for deeper fixes.
+
 ## Completion Review
 
 Before claiming work is done:

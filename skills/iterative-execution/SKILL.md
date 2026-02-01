@@ -52,6 +52,14 @@ Use whatever is available, in order of preference:
 4. **External tools** (MCP servers, other plugins the user has configured)
 5. **Manual inspection** (read the code, trace the logic)
 
+## Performance Optimization Tasks
+
+When the task is performance optimization, the verification step MUST include:
+1. **Timing comparison** — measure before vs after on the actual workload. Quantify the speedup.
+2. **Test suite pass** — correctness preserved. Any new test failure invalidates the optimization.
+3. **Profile comparison** — confirm the bottleneck was actually addressed, not just masked or shifted elsewhere.
+4. **Convenience bias check** — is this a structural improvement or a shallow, input-specific hack? If the latter, iterate.
+
 ## Honesty Rules
 
 - **Never claim done when tests fail.** If tests fail, you're not done.
