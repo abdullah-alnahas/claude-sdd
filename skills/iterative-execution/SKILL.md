@@ -1,10 +1,9 @@
 ---
 name: Iterative Execution
 description: >
-  This skill provides disciplined implement-verify-fix cycles for delivering features against specifications.
-  It should be used when the user asks to implement a feature from a spec, when implementation needs iterating
-  to match requirements, or when the user says "make this work," "implement this spec," "keep going until all
-  tests pass," or "it's not matching the spec yet."
+  Use when implementing a feature from a spec, when implementation needs iterating to match
+  requirements, or when delivering any non-trivial change. Use when the user says "make this work,"
+  "implement this spec," "keep going until all tests pass," or "it's not matching the spec yet."
 ---
 
 # Iterative Execution
@@ -35,6 +34,21 @@ They are complementary, not competing. TDD governs how you write code. Iterative
 6. Repeat until ALL criteria satisfied or max iterations reached
 7. Report honest completion status
 ```
+
+## Rationalization Red Flags
+
+These thoughts mean STOP — you're about to skip verification:
+
+| Thought | Reality |
+|---------|---------|
+| "I'll verify everything at the end" | Verify after each change. End-of-task catches less. |
+| "The code looks right, no need to run tests" | Looking right is not evidence. Run the tests. |
+| "I fixed the issue, moving on" | Did you verify the fix? Run the test again. |
+| "Only one small thing changed" | Small changes cause big failures. Verify. |
+| "I already know this passes" | You knew the previous version passed. This is a new version. |
+| "Verification would take too long" | Shipping a bug takes longer. Verify. |
+| "The spec is satisfied, I can see it" | Seeing is not testing. Run the criteria checks. |
+| "I'll skip this iteration's verification" | Skipping once becomes skipping always. Never skip. |
 
 ## Completion Criteria
 
@@ -75,3 +89,4 @@ For performance optimization tasks, the verification step must additionally incl
 
 See: `references/loop-patterns.md`
 See: `references/completion-criteria.md`
+See: `references/review-prompts.md`

@@ -1,11 +1,9 @@
 ---
 name: Performance Optimization
 description: >
-  This skill enforces disciplined performance optimization practices defending against convenience bias,
-  bottleneck mis-targeting, and correctness regressions. It should be used when the user asks to optimize,
-  speed up, improve performance, reduce runtime, or make code faster — any task where the goal is better
-  performance without breaking correctness. Trigger phrases include "profile this," "find the bottleneck,"
-  "reduce memory usage," "speed up," "optimize."
+  Use when optimizing, speeding up, profiling, reducing memory usage, or improving performance.
+  Use when the user says "profile this," "find the bottleneck," "speed up," or "optimize."
+  Use when any change targets performance without breaking correctness.
 ---
 
 # Performance Optimization Discipline

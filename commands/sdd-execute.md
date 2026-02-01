@@ -73,9 +73,27 @@ No critical issues from critic agent.
 Completion is genuine — verified against spec.
 ```
 
+## Batch Execution
+
+When working on multiple criteria or tasks, group them into batches of 3:
+
+1. Implement batch (3 criteria/tasks) using TDD
+2. Verify the batch — run tests, check spec compliance
+3. Report progress with verification evidence (test output, not claims)
+4. Pause for user feedback before continuing to the next batch
+
+This prevents long unverified runs and gives the user control over direction.
+
+## Verification
+
+After each batch, use the two-stage review process:
+- **Stage 1**: Spec compliance — verify each criterion with evidence (see `/sdd-review`)
+- **Stage 2**: Code quality — only after Stage 1 passes
+
 ## Principles
 
 - TDD is the inner discipline: every piece of new code starts with a failing test
 - The outer loop verifies against the spec, not just test results
 - Honest reporting: never claim done when criteria are unsatisfied
 - Bounded: max iterations prevent infinite loops
+- Batch execution: groups of 3 with checkpoint reports

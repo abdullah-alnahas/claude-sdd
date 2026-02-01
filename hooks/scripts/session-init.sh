@@ -1,6 +1,6 @@
 #!/bin/bash
 # SDD Session Initialization Hook
-# Loads .sdd.yaml config, sets environment variables, checks yolo flag
+# Loads .sdd.yaml config, sets environment variables, checks yolo flag, injects using-sdd skill
 
 set -euo pipefail
 
@@ -45,6 +45,15 @@ else
   if [ -n "$ENV_FILE" ]; then
     echo "SDD_CONFIG_FOUND=false" >> "$ENV_FILE"
   fi
+fi
+
+# Inject using-sdd skill as additionalContext
+USING_SDD_PATH="${CLAUDE_PLUGIN_ROOT:-}/skills/using-sdd/SKILL.md"
+if [ -f "$USING_SDD_PATH" ]; then
+  # Strip frontmatter and output as additionalContext
+  sed '1{/^---$/!q;};1,/^---$/d' "$USING_SDD_PATH"
+else
+  echo "SDD WARNING: using-sdd skill not found at $USING_SDD_PATH" >&2
 fi
 
 echo "SDD: Session initialized — guardrails active" >&2

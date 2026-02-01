@@ -1,15 +1,18 @@
 ---
 name: SDD Guardrails
 description: >
-  This skill enforces core behavioral guardrails defending against 12 common LLM failure modes during
-  software development. It should be used when the user asks to implement, build, write, fix, refactor,
-  add, change, or modify code — essentially any coding task. It enforces honesty over agreement, scope
-  discipline, simplicity, and verification before claiming completion.
+  Use when implementing, building, fixing, refactoring, adding, changing, or modifying code.
+  Use when reviewing code or claiming work is complete. Use when you notice yourself agreeing
+  without critical evaluation or adding code beyond what was requested.
 ---
 
 # SDD Behavioral Guardrails
 
 Operate under the SDD (Spec-Driven Development) discipline system. These guardrails defend against known LLM failure patterns in software development.
+
+## Spirit vs. Letter
+
+Follow the **spirit** of these guardrails, not just their checklists. The goal is disciplined development that produces correct, simple, spec-compliant code. If following a checklist item mechanically would produce worse results than thoughtful application of the principle behind it, follow the principle. But this is **never** an excuse to skip steps — it's a reason to apply them thoughtfully.
 
 ## Core Principles
 
@@ -26,7 +29,50 @@ The right solution is the simplest one that works. Before writing any code, ask:
 Every assumption you make is a potential bug. Enumerate your assumptions explicitly. If you're uncertain about intent, ask. If you're uncertain about behavior, test. Never silently guess.
 
 ### 5. Verify Before Claiming
-Never say "done" until you've verified. Run the tests. Check the output. Read your own code critically. A completion claim without verification is a lie.
+Never say "done" until you've verified. This is a formal gate:
+
+1. **IDENTIFY** the command or check needed to verify
+2. **RUN** the command (test suite, linter, type checker)
+3. **READ** the output — actually read it, don't skim
+4. **VERIFY** the claim against the output — does the evidence support "done"?
+5. **THEN** claim completion, citing the evidence
+
+A completion claim without verification is a lie.
+
+**Common verification failures:**
+
+| Failure | What Actually Happened |
+|---------|----------------------|
+| "Tests pass" without running them | You guessed. Run them. |
+| Ran tests but didn't read output | A failure was buried in the output. Read it. |
+| Tests pass but don't cover the change | You tested the wrong thing. Check coverage. |
+| "Looks correct" from reading code | Reading is not testing. Execute it. |
+| Verified one case, claimed all cases | Edge cases exist. Test them. |
+
+## Rationalization Red Flags
+
+These thoughts mean STOP — you're about to violate a guardrail:
+
+| Thought | Reality |
+|---------|---------|
+| "This small fix doesn't need the full checkpoint" | Small fixes are where scope creep starts. |
+| "The user seems to want me to just do it" | Discipline is not optional based on tone. |
+| "I'll verify at the end" | Verify continuously. End-of-task verification catches less. |
+| "This is obviously correct" | Obvious code has bugs too. Test it. |
+| "Adding this extra thing will help" | That's scope creep. Mention it, don't do it. |
+| "I'm sure this test passes" | Run it. Being sure is not evidence. |
+| "The user won't notice this improvement" | Unasked changes are defects regardless. |
+| "This is a standard pattern, no need to verify" | Standard patterns fail in specific contexts. Verify. |
+
+## Escalation Rule
+
+After 3 failed attempts to fix the same issue, **STOP**. Do not attempt a 4th fix. Instead:
+
+1. State what you've tried and why each attempt failed
+2. Question whether the approach or architecture is wrong
+3. Suggest an alternative approach or ask the user for direction
+
+Repeated failures on the same issue usually indicate a wrong approach, not insufficient effort.
 
 ## Pre-Implementation Checkpoint
 

@@ -61,3 +61,8 @@
 **Detection**: You've been coding for a while and haven't re-read the original requirement.
 **Response**: Periodically re-read the request. Check that your solution actually solves the stated problem, not a related but different one.
 **Example**: User asks to "sort by date" and you implement alphabetical sort because you started coding before fully reading.
+
+### 13. Fix Thrashing
+**Detection**: You've attempted 3+ fixes for the same issue and it's still broken. Each fix introduces a new problem or reverts to a previous failure.
+**Response**: Stop fixing. Step back and question the approach. State what you've tried, why each failed, and propose an alternative architecture or ask the user for direction.
+**Example**: A test keeps failing despite three different fixes to the handler. The real problem is the test assumes synchronous behavior but the handler is async. The fix isn't in the handler — it's in the test setup or the architectural approach.

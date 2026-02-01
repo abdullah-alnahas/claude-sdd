@@ -54,12 +54,15 @@ When invoked, execute the following phases in order. Announce each phase transit
 
 **Input**: Behavior spec + roadmap from previous phases.
 **Actions**:
-1. Work through roadmap items in priority order
+1. Work through roadmap items in priority order, in **batches of 3**
 2. For each item, use TDD:
    - Write failing test(s) that cover the relevant acceptance criteria
    - Write minimal code to pass
    - Refactor
-3. After each roadmap item, run available verification (test suite, linters, type checks)
+3. After each batch of 3 items:
+   - Run available verification (test suite, linters, type checks)
+   - Report progress with verification evidence (actual test output)
+   - Pause for user feedback before continuing
 4. If tests fail, fix using TDD (understand failure → write targeted fix → verify)
 5. Continue until all roadmap items complete
 
@@ -71,12 +74,21 @@ Use the iterative execution outer loop: implement → verify → fix gaps → re
 
 **Input**: Implementation from Phase 3.
 **Actions**:
+Use the two-stage review process (see `/sdd-review`):
+
+**Stage 1 — Spec Compliance:**
 1. Run full test suite
 2. Invoke **spec-compliance agent** — compare implementation against behavior-spec.md
-3. Invoke **critic agent** — find logical errors, assumption issues
-4. Invoke **security-reviewer agent** — check for vulnerabilities
-5. If performance optimization was part of the spec, invoke **performance-reviewer agent**
-6. Collect all findings
+3. DO NOT trust the implementation report. Read actual code and test output independently.
+4. For each acceptance criterion: PASS / FAIL / PARTIAL with evidence
+5. Stage 1 must pass before proceeding to Stage 2
+
+**Stage 2 — Code Quality:**
+6. Invoke **critic agent** — find logical errors, assumption issues
+7. Invoke **simplifier agent** — find unnecessary complexity
+8. Invoke **security-reviewer agent** — check for vulnerabilities
+9. If performance optimization was part of the spec, invoke **performance-reviewer agent**
+10. Collect all findings
 
 **Transition**: "Verify phase complete — N findings (X critical, Y high, Z medium). Entering Review phase."
 

@@ -1,15 +1,18 @@
 ---
 name: TDD Discipline
 description: >
-  This skill enforces test-driven development discipline with the Red/Green/Refactor cycle and traceability
-  from behavior spec to test to code. It should be used when the user asks to write tests, add test coverage,
-  discuss testing strategy, fix a bug, or says "how should I test this?", "add tests for this," "write tests first,"
-  "fix this bug," or "debug this."
+  Use when writing tests, adding test coverage, fixing bugs, debugging, or when any new code needs
+  to be written. Use when the user says "write tests," "add tests," "fix this bug," "debug this,"
+  or "how should I test this?"
 ---
 
 # TDD Discipline
 
 Tests are not an afterthought — they are the first expression of intent. Write the test that describes the behavior, watch it fail, then write the minimum code to make it pass.
+
+## Spirit vs. Letter
+
+The spirit of TDD is: **know what correct behavior looks like before writing the code.** The Red/Green/Refactor cycle is the mechanism, but the principle is that you define "done" before you start. If a situation genuinely doesn't benefit from a test-first approach (see "When TDD Is Overhead" below), skip the mechanism — but never skip the principle of defining expected behavior first.
 
 ## Red → Green → Refactor
 
@@ -18,6 +21,21 @@ Tests are not an afterthought — they are the first expression of intent. Write
 3. **Refactor**: Clean up without changing behavior (tests still pass)
 
 This cycle applies at every level: unit, integration, e2e.
+
+## Rationalization Red Flags
+
+These thoughts mean STOP — you're about to skip TDD:
+
+| Thought | Reality |
+|---------|---------|
+| "I'll write tests after the code works" | That's test-after, not TDD. Write the test first. |
+| "This is too simple to need a test" | Simple code with no test becomes complex code with no test. |
+| "I know this works, I'll just verify manually" | Manual verification doesn't persist. Tests do. |
+| "The test is obvious, I'll skip to code" | If it's obvious, it takes 30 seconds to write. Do it. |
+| "I need to see the code structure first" | Write the test to discover the structure. That's the point. |
+| "This is just a refactor, tests already pass" | Run the tests. Confirm they pass. Then refactor. |
+| "Writing a test for this would be too complex" | If you can't test it, you can't verify it. Simplify the design. |
+| "I'll add tests in the next iteration" | Next iteration never comes. Write them now. |
 
 ## Relationship to Iterative Execution
 
