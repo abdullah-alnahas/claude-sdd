@@ -45,7 +45,7 @@ check "All command names are unique" test "$(echo "$NAMES" | wc -l)" -eq "$(echo
 # Check agents referenced by commands exist
 echo ""
 echo "Agent references:"
-AGENTS=("critic" "simplifier" "spec-compliance" "security-reviewer")
+AGENTS=("critic" "simplifier" "spec-compliance" "security-reviewer" "performance-reviewer")
 for agent in "${AGENTS[@]}"; do
   check "Agent: $agent.md exists" test -f "$PLUGIN_DIR/agents/$agent.md"
 done

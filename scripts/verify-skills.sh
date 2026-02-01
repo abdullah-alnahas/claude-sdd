@@ -21,7 +21,7 @@ check() {
 echo "SDD Skill Verification"
 echo "──────────────────────"
 
-SKILLS=("guardrails" "spec-first" "architecture-aware" "tdd-discipline" "iterative-execution")
+SKILLS=("guardrails" "spec-first" "architecture-aware" "tdd-discipline" "iterative-execution" "performance-optimization")
 
 for skill in "${SKILLS[@]}"; do
   echo ""
