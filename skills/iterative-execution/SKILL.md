@@ -90,3 +90,4 @@ For performance optimization tasks, the verification step must additionally incl
 See: `references/loop-patterns.md`
 See: `references/completion-criteria.md`
 See: `references/review-prompts.md`
+See: `references/retrieval-pattern.md`

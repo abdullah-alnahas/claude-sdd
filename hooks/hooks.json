@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "If this message is a trivial acknowledgment (e.g. 'yes', 'no', 'thanks', 'ok', 'continue'), skip and respond normally. Otherwise, apply the SDD pre-implementation checkpoint from the guardrails skill (enumerate assumptions, flag ambiguity, surface alternatives, push back on bad ideas, define scope, check for spec, plan TDD approach) before proceeding. If GUARDRAILS_DISABLED=true, skip."
+            "prompt": "If this message is a trivial acknowledgment (e.g. 'yes', 'no', 'thanks', 'ok', 'continue'), skip and respond normally. If SDD_MODE=review or SDD_MODE=research, skip. Otherwise, apply the SDD pre-implementation checkpoint from the guardrails skill (enumerate assumptions, flag ambiguity, surface alternatives, push back on bad ideas, define scope, check for spec, plan TDD approach) before proceeding. If GUARDRAILS_DISABLED=true, skip."
           }
         ]
       }
@@ -34,6 +34,16 @@
             "timeout": 15
           }
         ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/scripts/compaction-counter.sh\"",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "Stop": [
@@ -42,7 +52,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Before finalizing, perform the SDD completion review from the guardrails skill (spec adherence, test coverage, complexity audit, dead code check, scope creep check, conceptual error scan). Report findings concisely. If GUARDRAILS_DISABLED=true, skip."
+            "prompt": "Before finalizing, perform the SDD completion review from the guardrails skill (spec adherence, test coverage, complexity audit, dead code check, scope creep check, conceptual error scan). Report findings concisely. If GUARDRAILS_DISABLED=true or SDD_MODE=research, skip."
           }
         ]
       }

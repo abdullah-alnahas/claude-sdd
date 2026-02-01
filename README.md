@@ -51,7 +51,10 @@ Profile-first discipline for performance work. Defends against convenience bias 
 | `/sdd-guardrails` | Show/toggle guardrail status |
 | `/sdd-yolo` | Disable all guardrails (auto-clears next session) |
 | `/sdd-phase` | Show/set development phase |
-| `/sdd-review` | On-demand review with critic + simplifier agents |
+| `/sdd-mode` | Switch context mode (dev/review/research) |
+| `/sdd-review` | Two-stage review — spec compliance then code quality |
+| `/sdd-verify` | Automated checks — build, types, lint, tests, security scans |
+| `/sdd-orchestrate` | Agent pipelines — feature, bugfix, refactor, security, or custom |
 | `/sdd-adopt` | Adopt an existing project into SDD |
 | `/sdd-execute` | Start iterative execution loop against a spec |
 | `/sdd-autopilot` | Full autonomous lifecycle: specify → design → implement → verify → review |
@@ -65,6 +68,23 @@ Profile-first discipline for performance work. Defends against convenience bias 
 | **spec-compliance** | Spec adherence checker — verifies traceability (spec → test → code) |
 | **security-reviewer** | Security analysis — OWASP Top 10, input validation, auth review |
 | **performance-reviewer** | Performance optimization reviewer — validates patches for bottleneck targeting, convenience bias, measured improvement |
+| **planner** | Implementation planner — reads specs/architecture and produces ordered steps |
+
+## Context Modes
+
+SDD supports three context modes that adjust which guardrails are active:
+
+| Mode | Focus | Pre-Implementation | Completion Review | Scope Guard |
+|------|-------|-------------------|-------------------|-------------|
+| **dev** (default) | Build correctly | Active | Active | Strict |
+| **review** | Verify and critique | Skipped | Active | Normal |
+| **research** | Explore freely | Skipped | Skipped | Relaxed |
+
+Set mode with `/sdd-mode <mode>` or set a default in `.sdd.yaml`:
+
+```yaml
+mode: dev  # dev | review | research
+```
 
 ## Configuration
 
@@ -73,6 +93,8 @@ Create `.sdd.yaml` in your project root:
 ```yaml
 verbosity: standard  # minimal | standard | verbose
 enabled: true
+mode: dev  # dev | review | research
+compaction_threshold: 50  # tool invocations before suggesting /compact
 
 guardrails:
   pre-implementation:

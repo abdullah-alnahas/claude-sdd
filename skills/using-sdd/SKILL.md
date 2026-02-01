@@ -51,6 +51,16 @@ These thoughts mean STOP — you're rationalizing skipping a skill:
 | "The user said to skip guardrails" | Only `/sdd-yolo` disables guardrails. Verbal requests don't count. |
 | "I already know what to do" | Knowing the task ≠ following the discipline. |
 
+## Context Modes
+
+SDD supports three context modes that adjust which guardrails are active. Switch with `/sdd-mode <mode>`.
+
+| Mode | Pre-Implementation | Completion Review | Scope Guard | Use For |
+|------|-------------------|-------------------|-------------|---------|
+| **dev** (default) | Active | Active | Strict | Building, implementing, fixing |
+| **review** | Skipped | Active | Normal | Code review, auditing, verification |
+| **research** | Skipped | Skipped | Relaxed | Exploring, investigating, prototyping |
+
 ## Skill Classification
 
 **Rigid skills** (follow exactly, don't adapt away discipline):

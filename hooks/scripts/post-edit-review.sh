@@ -4,8 +4,11 @@
 
 set -euo pipefail
 
-# Skip if guardrails disabled
+# Skip if guardrails disabled or in research mode
 if [ "${GUARDRAILS_DISABLED:-false}" = "true" ]; then
+  exit 0
+fi
+if [ "${SDD_MODE:-dev}" = "research" ]; then
   exit 0
 fi
 

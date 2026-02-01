@@ -73,8 +73,10 @@ echo ""
 echo "Hook scripts:"
 check "session-init.sh exists" test -f "$PLUGIN_DIR/hooks/scripts/session-init.sh"
 check "post-edit-review.sh exists" test -f "$PLUGIN_DIR/hooks/scripts/post-edit-review.sh"
+check "compaction-counter.sh exists" test -f "$PLUGIN_DIR/hooks/scripts/compaction-counter.sh"
 check "session-init.sh is executable or bash-runnable" bash -n "$PLUGIN_DIR/hooks/scripts/session-init.sh"
 check "post-edit-review.sh is executable or bash-runnable" bash -n "$PLUGIN_DIR/hooks/scripts/post-edit-review.sh"
+check "compaction-counter.sh is executable or bash-runnable" bash -n "$PLUGIN_DIR/hooks/scripts/compaction-counter.sh"
 
 # Test session-init.sh runs without error (in isolated temp dir to avoid side effects)
 echo ""
