@@ -63,13 +63,12 @@ For performance optimization tasks, the verification step must additionally incl
 - **Never weaken criteria to match output.** The spec defines done, not the implementation.
 - **Be honest about partial completion.** "3 of 5 criteria met, blocked on X" is better than a false "done."
 
-## References
-
 ## Related Skills
 
 - **tdd-discipline** — the inner discipline used within each implementation step
 - **spec-first** — produces the specs that define completion criteria
 - **guardrails** — the overarching discipline layer
+- **architecture-aware** — architectural context for integration decisions during implementation
 - **performance-optimization** — specialized verification for performance tasks
 
 ## References

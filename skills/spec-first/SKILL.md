@@ -64,6 +64,7 @@ For existing projects, use the adoption flow instead of starting from scratch. S
 
 - **architecture-aware** — for deeper architectural guidance during Stage 4
 - **tdd-discipline** — for test planning from behavior specs (use `references/templates/test-plan.md`)
+- **iterative-execution** — delivers features against the specs produced here
 - **guardrails** — enforces spec-first as a pre-implementation check
 
 ## References

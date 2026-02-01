@@ -41,6 +41,7 @@ If a decision is hard to reverse or affects multiple components, it deserves an 
 ## Related Skills
 
 - **spec-first** — architecture decisions emerge during Stage 4 (Architecture)
+- **iterative-execution** — architectural context guides integration during implementation
 - **guardrails** — enforces architectural consistency as part of scope discipline
 
 ## References

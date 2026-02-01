@@ -63,5 +63,5 @@ Phase-specific agent recommendations:
 - **specify**: spec-compliance (verify spec completeness)
 - **design**: critic (architectural review), simplifier
 - **implement**: spec-compliance (traceability), critic (logic review)
-- **verify**: security-reviewer, performance-reviewer, spec-compliance
+- **verify**: critic, security-reviewer, performance-reviewer, spec-compliance
 - **review**: all agents

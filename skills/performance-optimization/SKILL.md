@@ -4,7 +4,8 @@ description: >
   This skill enforces disciplined performance optimization practices defending against convenience bias,
   bottleneck mis-targeting, and correctness regressions. It should be used when the user asks to optimize,
   speed up, improve performance, reduce runtime, or make code faster — any task where the goal is better
-  performance without breaking correctness.
+  performance without breaking correctness. Trigger phrases include "profile this," "find the bottleneck,"
+  "reduce memory usage," "speed up," "optimize."
 ---
 
 # Performance Optimization Discipline
@@ -59,6 +60,8 @@ Before submitting a performance patch, verify it is NOT:
 - **guardrails** — enforces correctness-first and verify-before-claiming during optimization
 - **iterative-execution** — the outer verify-fix cycle for measuring and iterating on improvements
 - **tdd-discipline** — ensures test suite is maintained through optimization changes
+- **spec-first** — performance requirements originate in specs (stack.md, behavior-spec.md)
+- **architecture-aware** — structural optimizations require architectural context
 
 ## References
 

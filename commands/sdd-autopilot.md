@@ -65,7 +65,7 @@ When invoked, execute the following phases in order. Announce each phase transit
 
 Use the iterative execution outer loop: implement → verify → fix gaps → repeat (max 10 iterations per roadmap item).
 
-**Transition**: "Implement phase complete — N of M roadmap items done. Entering Verify phase."
+**Transition** (only when all items are complete): "Implement phase complete — all M roadmap items done. Entering Verify phase."
 
 ### Phase 4: Verify
 

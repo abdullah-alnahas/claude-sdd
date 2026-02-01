@@ -50,13 +50,12 @@ Code: FormHandler.submit()
 
 This chain ensures nothing is built without a reason and nothing specified goes untested. If a test has no spec criterion, either add the criterion to the spec or question whether the test is needed. If a spec criterion has no test, that is a finding — even if the code works.
 
-## References
-
 ## Related Skills
 
 - **iterative-execution** — the outer delivery cycle that uses TDD internally
 - **spec-first** — produces behavior specs that drive test design (see `spec-first/references/templates/test-plan.md`)
 - **guardrails** — enforces TDD during implementation
+- **performance-optimization** — uses TDD to preserve correctness during optimization
 
 ## References
 

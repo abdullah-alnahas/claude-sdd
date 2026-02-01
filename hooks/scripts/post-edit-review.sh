@@ -10,9 +10,11 @@ if [ "${GUARDRAILS_DISABLED:-false}" = "true" ]; then
 fi
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-.}"
-# Resolve to absolute path to avoid relative vs absolute mismatch
+# Resolve to absolute path (POSIX-compatible fallback when realpath unavailable)
 if command -v realpath &>/dev/null; then
   PROJECT_DIR=$(realpath "$PROJECT_DIR" 2>/dev/null || echo "$PROJECT_DIR")
+else
+  PROJECT_DIR=$(cd "$PROJECT_DIR" 2>/dev/null && pwd || echo "$PROJECT_DIR")
 fi
 
 # Read tool input from stdin (JSON with file_path)
@@ -20,8 +22,8 @@ INPUT=$(cat)
 
 # Use jq if available, fall back to sed
 if command -v jq &>/dev/null; then
-  FILE_PATH=$(echo "$INPUT" | jq -r '.file_path // .filePath // empty' 2>/dev/null)
-  if [ $? -ne 0 ] || [ -z "$FILE_PATH" ]; then
+  FILE_PATH=$(echo "$INPUT" | jq -r '.file_path // .filePath // empty' 2>/dev/null || true)
+  if [ -z "$FILE_PATH" ]; then
     echo "SDD: post-edit-review skipped — could not parse file_path from hook input" >&2
     exit 0
   fi
@@ -40,6 +42,8 @@ fi
 # Resolve file path to absolute for consistent comparison
 if command -v realpath &>/dev/null; then
   FILE_PATH=$(realpath "$FILE_PATH" 2>/dev/null || echo "$FILE_PATH")
+elif [ -f "$FILE_PATH" ]; then
+  FILE_PATH=$(cd "$(dirname "$FILE_PATH")" 2>/dev/null && echo "$(pwd)/$(basename "$FILE_PATH")" || echo "$FILE_PATH")
 fi
 
 # Check if inside project directory

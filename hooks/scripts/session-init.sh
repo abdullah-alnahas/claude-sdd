@@ -4,6 +4,11 @@
 
 set -euo pipefail
 
+# Validate plugin environment
+if [ -z "${CLAUDE_PLUGIN_ROOT:-}" ]; then
+  echo "SDD WARNING: CLAUDE_PLUGIN_ROOT is not set — hooks may not locate plugin resources" >&2
+fi
+
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-.}"
 ENV_FILE="${CLAUDE_ENV_FILE:-}"
 CONFIG_FILE="$PROJECT_DIR/.sdd.yaml"
