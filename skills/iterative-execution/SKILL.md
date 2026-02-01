@@ -47,11 +47,10 @@ Good completion criteria are:
 
 Use whatever is available, in order of preference:
 1. **Automated tests** (test runners, linters, type checkers)
-2. **Plugin agents** (critic, spec-compliance, security-reviewer)
-3. **Plugin skills** (guardrails, architecture-aware)
-4. **External MCP servers** (if user has configured any)
-5. **External plugin agents/skills** (if other plugins are installed)
-6. **Manual inspection** (read the code, trace the logic)
+2. **Available review agents** (e.g., critic, spec-compliance, security-reviewer)
+3. **Available analysis skills** (e.g., guardrails, architecture-aware)
+4. **External tools** (MCP servers, other plugins the user has configured)
+5. **Manual inspection** (read the code, trace the logic)
 
 ## Honesty Rules
 

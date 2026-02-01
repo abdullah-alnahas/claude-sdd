@@ -11,7 +11,7 @@ YOLO_FLAG="$PROJECT_DIR/.sdd-yolo"
 
 # Check for yolo mode
 if [ -f "$YOLO_FLAG" ]; then
-  echo "SDD: YOLO mode active — all guardrails disabled" >&2
+  echo "SDD: Previous YOLO mode detected — clearing flag, guardrails disabled for this session" >&2
   # Remove yolo flag (auto-clears on session start)
   rm -f "$YOLO_FLAG"
   if [ -n "$ENV_FILE" ]; then
@@ -29,7 +29,7 @@ fi
 
 # Check for config file
 if [ -f "$CONFIG_FILE" ]; then
-  echo "SDD: Config loaded from $CONFIG_FILE" >&2
+  echo "SDD: Config file found at $CONFIG_FILE" >&2
   if [ -n "$ENV_FILE" ]; then
     echo "SDD_CONFIG_FOUND=true" >> "$ENV_FILE"
   fi

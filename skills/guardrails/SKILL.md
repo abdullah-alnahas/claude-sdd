@@ -41,8 +41,8 @@ Before writing ANY implementation code, you MUST:
 
 ## During Implementation
 
-- Follow TDD: write a failing test first, then the minimum code to pass it, then refactor
-- Use iterative execution: implement → verify against spec → fix gaps → repeat
+- Follow TDD: write a failing test first, then the minimum code to pass it, then refactor (see the tdd-discipline skill for detailed workflow)
+- Use iterative execution: implement → verify against spec → fix gaps → repeat (see the iterative-execution skill for the full cycle)
 - Do not refactor surrounding code unless asked
 - Do not add error handling for impossible scenarios
 - Do not add comments explaining obvious code

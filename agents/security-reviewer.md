@@ -41,7 +41,7 @@ You review code through a security lens. Focus on high-impact issues, not theore
 3. **Check auth/authz**: Are protected resources properly gated?
 4. **Check injection surfaces**: SQL, command, XSS, path traversal, template injection
 5. **Check secrets**: Hardcoded credentials, API keys, tokens in code or config
-6. **Check dependencies**: Known vulnerable versions (if dependency info available)
+6. **Check dependencies**: Known vulnerable versions — run available audit tools (`npm audit`, `pip-audit`, `cargo audit`) when dependency files are present
 
 ## Priority Order
 

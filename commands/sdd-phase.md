@@ -27,10 +27,18 @@ Display or change the current SDD development phase. Phases provide context that
 | **verify** | Verification | Running full verification suite, spec-compliance checks, security review |
 | **review** | Review | Critic + simplifier agents, retrospective |
 
+## Persistence
+
+Phase state is stored in `.sdd-phase` in the project root. This file contains a single word (the phase name). If the file does not exist, phase is "none".
+
+- **Set phase**: Write the phase name to `.sdd-phase`
+- **Show phase**: Read `.sdd-phase` (or report "none" if missing)
+- **Clear phase**: Delete `.sdd-phase`
+
 ## Behavior
 
-1. Display the current phase (or "none" if not set)
-2. If a phase name is provided, set it
+1. Read `.sdd-phase` to display the current phase (or "none" if not found)
+2. If a phase name is provided, validate it against the known phases and write to `.sdd-phase`
 3. Phase context is available to subsequent prompts and skills
 4. Phase affects which skills are most relevant:
    - `specify` → spec-first skill

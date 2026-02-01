@@ -30,7 +30,7 @@ fi
 
 # Check if inside project directory
 case "$FILE_PATH" in
-  "$PROJECT_DIR"*) ;; # Inside project, OK
+  "$PROJECT_DIR/"*|"$PROJECT_DIR") ;; # Inside project, OK
   /*)
     echo "SDD SCOPE WARNING: Edit to file outside project directory: $FILE_PATH" >&2
     exit 2
