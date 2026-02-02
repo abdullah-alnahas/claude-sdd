@@ -4,16 +4,22 @@ A Claude Code plugin that enforces disciplined software development: behavioral 
 
 ## Installation
 
+### From GitHub marketplace (recommended)
+
 ```bash
-# From npm (recommended)
-claude plugins add @abdullah-alnahas/claude-sdd
+# 1. Add the repo as a marketplace
+/plugin marketplace add abdullah-alnahas/claude-sdd
 
-# From GitHub
+# 2. Install the plugin
+/plugin install claude-sdd@claude-sdd
+```
+
+### For local development
+
+```bash
+# Clone and load directly
 git clone https://github.com/abdullah-alnahas/claude-sdd.git
-claude plugins add ./claude-sdd
-
-# For local development
-claude plugins add /path/to/sdd
+claude --plugin-dir ./claude-sdd
 ```
 
 ## What It Does
