@@ -71,7 +71,7 @@ This chain ensures nothing is built without a reason and nothing specified goes 
 ## Related Skills
 
 - **iterative-execution** — the outer delivery cycle that uses TDD internally
-- **spec-first** — produces behavior specs that drive test design (see `spec-first/references/templates/test-plan.md`)
+- **spec-first** — produces behavior specs that drive test design (see `skills/spec-first/references/templates/test-plan.md` from plugin root)
 - **guardrails** — enforces TDD during implementation
 - **performance-optimization** — uses TDD to preserve correctness during optimization
 

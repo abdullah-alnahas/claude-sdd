@@ -15,8 +15,10 @@ CONFIG_FILE="$PROJECT_DIR/.sdd.yaml"
 YOLO_FLAG="$PROJECT_DIR/.sdd-yolo"
 
 # Check for yolo mode
+YOLO_ACTIVE=false
 if [ -f "$YOLO_FLAG" ]; then
-  echo "SDD: Previous YOLO mode detected — clearing flag, guardrails disabled for this session" >&2
+  YOLO_ACTIVE=true
+  echo "SDD: YOLO flag detected — removing flag, guardrails disabled for this session only" >&2
   # Remove yolo flag (auto-clears on session start)
   if ! rm -f "$YOLO_FLAG" 2>/dev/null; then
     echo "SDD WARNING: Could not remove yolo flag at $YOLO_FLAG — guardrails may remain disabled next session" >&2
@@ -25,12 +27,15 @@ if [ -f "$YOLO_FLAG" ]; then
     echo "GUARDRAILS_DISABLED=true" >> "$ENV_FILE"
     echo "SDD_YOLO_CLEARED=true" >> "$ENV_FILE"
   fi
-  exit 0
+  # NOTE: Do not exit here — continue initialization so SDD env vars and
+  # skill injection still work. Only guardrails are disabled, not the whole system.
 fi
 
-# Set defaults
+# Set defaults (skip GUARDRAILS_DISABLED if yolo already set it)
 if [ -n "$ENV_FILE" ]; then
-  echo "GUARDRAILS_DISABLED=false" >> "$ENV_FILE"
+  if [ "$YOLO_ACTIVE" = "false" ]; then
+    echo "GUARDRAILS_DISABLED=false" >> "$ENV_FILE"
+  fi
   echo "SDD_ACTIVE=true" >> "$ENV_FILE"
 fi
 
@@ -65,6 +70,7 @@ if [ -f "$CONFIG_FILE" ]; then
   fi
   # Read agent extra instructions from config
   # Matches lines like: agents.<name>.extra_instructions: <value>
+  # NOTE: This grep-based parsing only supports single-line values. Multi-line YAML values are not supported.
   while IFS= read -r line; do
     AGENT_NAME=$(echo "$line" | sed -n 's/^[[:space:]]*\([a-zA-Z_-]*\):/\1/p' || true)
     if [ -n "$AGENT_NAME" ]; then
@@ -93,7 +99,11 @@ if [ -n "$ENV_FILE" ]; then
 fi
 
 # Inject using-sdd skill as additionalContext
-USING_SDD_PATH="${CLAUDE_PLUGIN_ROOT:-}/skills/using-sdd/SKILL.md"
+if [ -z "${CLAUDE_PLUGIN_ROOT:-}" ]; then
+  echo "SDD WARNING: CLAUDE_PLUGIN_ROOT is empty — cannot locate skill and context files" >&2
+  exit 0
+fi
+USING_SDD_PATH="${CLAUDE_PLUGIN_ROOT}/skills/using-sdd/SKILL.md"
 if [ -f "$USING_SDD_PATH" ]; then
   # Strip frontmatter and output as additionalContext
   sed '1{/^---$/!q;};1,/^---$/d' "$USING_SDD_PATH"
@@ -102,7 +112,7 @@ else
 fi
 
 # Inject context mode file
-CONTEXT_PATH="${CLAUDE_PLUGIN_ROOT:-}/contexts/${SDD_DEFAULT_MODE}.md"
+CONTEXT_PATH="${CLAUDE_PLUGIN_ROOT}/contexts/${SDD_DEFAULT_MODE}.md"
 if [ -f "$CONTEXT_PATH" ]; then
   echo ""
   cat "$CONTEXT_PATH"

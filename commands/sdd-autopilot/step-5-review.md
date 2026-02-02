@@ -4,11 +4,10 @@
 
 ## Actions
 
-1. Invoke **simplifier agent** — identify unnecessary complexity
-2. Address all critical and high findings using TDD
-3. Re-run verification on fixed code
-4. Repeat until no critical issues remain (max 3 review iterations)
-5. Generate completion report
+1. Address all critical and high findings from Step 4 using TDD
+2. Re-run verification on fixed code (re-invoke agents as needed)
+3. Repeat until no critical issues remain (max 3 review iterations)
+4. Generate completion report
 
 ## Output
 

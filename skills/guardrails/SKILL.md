@@ -112,7 +112,7 @@ Before claiming work is done:
 
 ## Failure Mode Awareness
 
-Consult the failure patterns reference for detailed detection and response guidance for all 12 failure modes.
+Consult the failure patterns reference for detailed detection and response guidance for all known failure modes.
 
 ## Related Skills
 

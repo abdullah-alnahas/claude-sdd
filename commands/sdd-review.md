@@ -27,7 +27,7 @@ Trigger a two-stage review of recent work. Stage 1 verifies spec compliance. Sta
 
 1. Identify what was recently changed (git diff or session context)
 2. Find the relevant behavior spec and acceptance criteria
-3. Run the **spec-compliance agent** with the Stage 1 prompt from `iterative-execution/references/review-prompts.md`
+3. Run the **spec-compliance agent** with the Stage 1 prompt from `skills/iterative-execution/references/review-prompts.md`
 4. **DO NOT trust the implementation report.** Read the actual code and test output independently.
 5. For each acceptance criterion: PASS / FAIL / PARTIAL with evidence
 6. If any criterion fails:
@@ -45,14 +45,14 @@ Trigger a two-stage review of recent work. Stage 1 verifies spec compliance. Sta
 1. Load `commands/checklists/code-review.md` as the review checklist
 2. Run the **critic agent** — find logical errors, assumption issues
 3. Run the **simplifier agent** — find unnecessary complexity
-3. If the changes involve performance optimization, run the **performance-reviewer agent**
-4. Present findings with severity levels:
+4. If the changes involve performance optimization, run the **performance-reviewer agent**
+5. Present findings with severity levels:
    - [Critical] — must fix
    - [Simplification] — should fix
    - [Observation] — consider fixing
-5. Offer to auto-fix critical and simplification issues
-6. If fixes are made (using TDD), re-run Stage 2
-7. Repeat until no critical issues remain or max iterations reached
+6. Offer to auto-fix critical and simplification issues
+7. If fixes are made (using TDD), re-run Stage 2
+8. Repeat until no critical issues remain or max iterations reached
 
 ## Output Format
 
@@ -94,6 +94,6 @@ Actions:
 
 ## References
 
-See: `iterative-execution/references/review-prompts.md` — Subagent prompt templates
+See: `skills/iterative-execution/references/review-prompts.md` — Subagent prompt templates
 
 **Note:** When launching agents, any extra instructions configured via `.sdd.yaml` `agents.<name>.extra_instructions` are injected into the agent prompt as `$SDD_AGENT_<NAME>_EXTRA`.

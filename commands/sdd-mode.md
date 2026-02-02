@@ -29,8 +29,8 @@ Switch the active SDD context mode. Each mode adjusts which guardrails, hooks, a
 ## Behavior
 
 When invoked with an argument:
-1. Write `SDD_MODE=<mode>` to `$CLAUDE_ENV_FILE`
-2. Read the corresponding context file from `contexts/<mode>.md`
+1. Write `SDD_MODE=<mode>` to `$CLAUDE_ENV_FILE` (if available)
+2. Read the corresponding context file from `$CLAUDE_PLUGIN_ROOT/contexts/<mode>.md`
 3. Report the mode switch and what changed
 
 When invoked without an argument:
@@ -39,4 +39,4 @@ When invoked without an argument:
 
 ## Context Files
 
-Each mode has a context file at `contexts/<mode>.md` that is loaded by the session init hook. These define the behavioral adjustments for that mode. See `.sdd.yaml` to set a default mode per project.
+Each mode has a context file at `$CLAUDE_PLUGIN_ROOT/contexts/<mode>.md` (relative to plugin root) that is loaded by the session init hook. These define the behavioral adjustments for that mode. See `.sdd.yaml` to set a default mode per project.
