@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "claude-sdd",
-      "source": ".",
+      "source": "./",
       "description": "Spec-Driven Development discipline system — behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, iterative execution loops",
       "version": "0.9.0",
       "author": {
