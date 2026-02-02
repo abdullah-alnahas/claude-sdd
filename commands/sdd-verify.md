@@ -70,6 +70,18 @@ Summary: 5/7 passed, 2 failed
 Ready for PR: NO
 ```
 
+## Checklist Integration
+
+Each mode loads a corresponding checklist from `commands/checklists/`:
+
+| Mode | Checklist |
+|------|-----------|
+| `pre-commit` | `checklists/pre-commit.md` |
+| `pre-pr` | `checklists/pre-pr.md` |
+| `full` | `checklists/feature-complete.md` (when verifying a completed feature) |
+
+Load the checklist at the start of verification and check off items as each check passes or fails. Include the checklist status in the output summary.
+
 ## How to Detect Project Tools
 
 1. Check `package.json` for scripts (build, test, lint, typecheck)

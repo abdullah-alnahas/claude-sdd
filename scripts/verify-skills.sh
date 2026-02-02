@@ -60,7 +60,7 @@ echo ""
 echo "Templates:"
 TEMPLATE_DIR="$PLUGIN_DIR/skills/spec-first/references/templates"
 check "Templates directory exists" test -d "$TEMPLATE_DIR"
-TEMPLATES=("app-description.md" "architecture.md" "stack.md" "roadmap.md" "behavior-spec.md" "test-plan.md" "retrospective.md")
+TEMPLATES=("app-description.md" "architecture.md" "stack.md" "roadmap.md" "behavior-spec.md" "test-plan.md" "retrospective.md" "implementation-task.md")
 for tmpl in "${TEMPLATES[@]}"; do
   check "Template: $tmpl exists" test -f "$TEMPLATE_DIR/$tmpl"
 done

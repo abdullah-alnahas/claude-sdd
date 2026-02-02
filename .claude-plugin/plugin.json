@@ -1,5 +1,5 @@
 {
   "name": "claude-sdd",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Spec-Driven Development discipline system — behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, iterative execution loops"
 }

@@ -23,7 +23,7 @@ check() {
 echo "SDD Command Verification"
 echo "────────────────────────"
 
-COMMANDS=("sdd-guardrails" "sdd-yolo" "sdd-phase" "sdd-review" "sdd-adopt" "sdd-execute" "sdd-autopilot" "sdd-mode" "sdd-verify" "sdd-orchestrate")
+COMMANDS=("sdd-guardrails" "sdd-yolo" "sdd-phase" "sdd-review" "sdd-adopt" "sdd-execute" "sdd-autopilot" "sdd-mode" "sdd-verify" "sdd-orchestrate" "sdd-status" "sdd-track" "sdd-context")
 
 for cmd in "${COMMANDS[@]}"; do
   echo ""

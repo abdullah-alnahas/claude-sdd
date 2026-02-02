@@ -94,6 +94,8 @@ Your position: Agent <N> of <total>
 Previous findings:
 <handoff from previous agent, or "First agent — no prior findings">
 
+Extra instructions: $SDD_AGENT_<NAME>_EXTRA (if set)
+
 Your task: <agent's standard task>
 Output your findings in the structured handoff format.
 ```

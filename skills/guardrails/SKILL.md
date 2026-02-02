@@ -126,3 +126,4 @@ Consult the failure patterns reference for detailed detection and response guida
 
 See: `references/failure-patterns.md`
 See: `references/pushback-guide.md`
+See: `references/adversarial-review-guide.md`

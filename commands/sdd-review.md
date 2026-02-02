@@ -42,8 +42,9 @@ Trigger a two-stage review of recent work. Stage 1 verifies spec compliance. Sta
 
 **Goal**: Find unnecessary complexity, dead code, scope creep.
 
-1. Run the **critic agent** — find logical errors, assumption issues
-2. Run the **simplifier agent** — find unnecessary complexity
+1. Load `commands/checklists/code-review.md` as the review checklist
+2. Run the **critic agent** — find logical errors, assumption issues
+3. Run the **simplifier agent** — find unnecessary complexity
 3. If the changes involve performance optimization, run the **performance-reviewer agent**
 4. Present findings with severity levels:
    - [Critical] — must fix
@@ -94,3 +95,5 @@ Actions:
 ## References
 
 See: `iterative-execution/references/review-prompts.md` — Subagent prompt templates
+
+**Note:** When launching agents, any extra instructions configured via `.sdd.yaml` `agents.<name>.extra_instructions` are injected into the agent prompt as `$SDD_AGENT_<NAME>_EXTRA`.

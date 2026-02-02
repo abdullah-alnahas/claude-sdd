@@ -23,111 +23,17 @@ Drives the full SDD lifecycle autonomously from a rough app description to verif
 
 ## Behavior
 
-When invoked, execute the following phases in order. Announce each phase transition clearly. Ask the user questions ONLY when genuinely blocked by ambiguity — make obvious decisions yourself and state them.
+Execute steps sequentially by loading each step file from `commands/sdd-autopilot/`:
 
-### Phase 1: Specify
+1. Read and execute `step-1-specify.md`
+2. Read and execute `step-2-design.md`
+3. Read and execute `step-3-implement.md`
+4. Read and execute `step-4-verify.md`
+5. Read and execute `step-5-review.md`
 
-**Input**: The app description (from argument).
-**Actions**:
-1. If input is a file path, read it. If inline text, treat as raw description.
-2. Summarize your understanding of what needs to be built. Ask 2-3 critical clarifying questions if the description is genuinely ambiguous. For clear descriptions, proceed without questions.
-3. Generate foundation documents in `specs/`:
-   - `app-description.md` — formalized from the raw input
-   - `behavior-spec.md` — with Given-When-Then acceptance criteria
-   - `stack.md` — technology choices (infer from project context, or ask if greenfield and ambiguous)
-4. Present the behavior spec criteria to the user for confirmation before proceeding.
+**DO NOT read ahead.** Load each step file only when you are ready to begin that step. Complete each step fully before loading the next.
 
-**Transition**: "Specify phase complete — N acceptance criteria defined. Entering Design phase."
-
-### Phase 2: Design
-
-**Input**: Foundation documents from Phase 1.
-**Actions**:
-1. Generate `architecture.md` — system structure, components, patterns
-2. If any architectural decision is non-obvious, generate an ADR
-3. Generate `roadmap.md` — prioritized implementation order
-4. Identify integration points, dependencies between roadmap items
-
-**Transition**: "Design phase complete — N roadmap items planned. Entering Implement phase."
-
-### Phase 3: Implement
-
-**Input**: Behavior spec + roadmap from previous phases.
-**Actions**:
-1. Work through roadmap items in priority order, in **batches of 3**
-2. For each item, use TDD:
-   - Write failing test(s) that cover the relevant acceptance criteria
-   - Write minimal code to pass
-   - Refactor
-3. After each batch of 3 items:
-   - Run available verification (test suite, linters, type checks)
-   - Report progress with verification evidence (actual test output)
-   - Pause for user feedback before continuing
-4. If tests fail, fix using TDD (understand failure → write targeted fix → verify)
-5. Continue until all roadmap items complete
-
-Use the iterative execution outer loop: implement → verify → fix gaps → repeat (max 10 iterations per roadmap item).
-
-**Transition** (only when all items are complete): "Implement phase complete — all M roadmap items done. Entering Verify phase."
-
-### Phase 4: Verify
-
-**Input**: Implementation from Phase 3.
-**Actions**:
-Use the two-stage review process (see `/sdd-review`):
-
-**Stage 1 — Spec Compliance:**
-1. Run full test suite
-2. Invoke **spec-compliance agent** — compare implementation against behavior-spec.md
-3. DO NOT trust the implementation report. Read actual code and test output independently.
-4. For each acceptance criterion: PASS / FAIL / PARTIAL with evidence
-5. Stage 1 must pass before proceeding to Stage 2
-
-**Stage 2 — Code Quality:**
-6. Invoke **critic agent** — find logical errors, assumption issues
-7. Invoke **simplifier agent** — find unnecessary complexity
-8. Invoke **security-reviewer agent** — check for vulnerabilities
-9. If performance optimization was part of the spec, invoke **performance-reviewer agent**
-10. Collect all findings
-
-**Transition**: "Verify phase complete — N findings (X critical, Y high, Z medium). Entering Review phase."
-
-### Phase 5: Review
-
-**Input**: Verification findings from Phase 4.
-**Actions**:
-1. Invoke **simplifier agent** — identify unnecessary complexity
-2. Address all critical and high findings using TDD
-3. Re-run verification on fixed code
-4. Repeat until no critical issues remain (max 3 review iterations)
-5. Generate completion report
-
-**Output**: Completion report:
-```
-SDD Autopilot — Complete
-════════════════════════
-
-Spec Criteria: X of Y satisfied
-Tests: N passing, M failing
-Review Iterations: K
-
-Phases completed:
-  ✓ Specify — N criteria defined
-  ✓ Design — M roadmap items, K ADRs
-  ✓ Implement — N items built with TDD
-  ✓ Verify — findings addressed
-  ✓ Review — no critical issues remaining
-
-Documents generated:
-  specs/app-description.md
-  specs/behavior-spec.md
-  specs/stack.md
-  specs/architecture.md
-  specs/roadmap.md
-
-Remaining issues:
-  [Any unresolved items, or "None"]
-```
+Announce each phase transition clearly using the transition message defined in each step file.
 
 ## Questioning Policy
 

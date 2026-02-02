@@ -24,6 +24,24 @@ You have access to SDD (Spec-Driven Development) skills that enforce development
 | **architecture-aware** | Structuring code, design patterns, component integration, ADRs |
 | **performance-optimization** | Optimizing, profiling, speeding up, reducing resource usage |
 
+## Command Catalog
+
+| Command | Phase | Required | Description |
+|---------|-------|----------|-------------|
+| `/sdd-status` | any | no | What exists, what's next |
+| `/sdd-adopt` | specify | yes (new) | Adopt existing project |
+| `/sdd-autopilot` | all | no | Full autonomous lifecycle |
+| `/sdd-execute` | implement | yes | TDD execution loop |
+| `/sdd-verify` | verify | yes | Automated checks |
+| `/sdd-review` | review | yes | Agent-based review |
+| `/sdd-orchestrate` | any | no | Custom agent pipelines |
+| `/sdd-track` | any | no | Task tracking |
+| `/sdd-context` | any | no | Project context generator |
+| `/sdd-phase` | any | no | Show/set phase |
+| `/sdd-mode` | any | no | Switch context mode |
+| `/sdd-guardrails` | any | no | Guardrail status |
+| `/sdd-yolo` | any | no | Disable guardrails |
+
 ## Skill Priority Order
 
 When multiple skills apply, use this order:

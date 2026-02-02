@@ -58,6 +58,9 @@ Profile-first discipline for performance work. Defends against convenience bias 
 | `/sdd-adopt` | Adopt an existing project into SDD |
 | `/sdd-execute` | Start iterative execution loop against a spec |
 | `/sdd-autopilot` | Full autonomous lifecycle: specify → design → implement → verify → review |
+| `/sdd-status` | Show project SDD status — what exists, what's missing, what's next |
+| `/sdd-track` | Lightweight task tracking via status.yaml |
+| `/sdd-context` | Generate LLM-optimized project context document |
 
 ## Agents
 
@@ -86,15 +89,49 @@ Set mode with `/sdd-mode <mode>` or set a default in `.sdd.yaml`:
 mode: dev  # dev | review | research
 ```
 
+## Checklists
+
+SDD includes validation checklists for common workflows in `commands/checklists/`:
+
+| Checklist | Used By | Purpose |
+|-----------|---------|---------|
+| `pre-commit.md` | `/sdd-verify pre-commit` | Build, types, lint, debug statements, git status |
+| `pre-pr.md` | `/sdd-verify pre-pr` | Full checks + security, secrets, TODO scan |
+| `feature-complete.md` | `/sdd-verify full` | Spec criteria, tests, review, no dead code |
+| `code-review.md` | `/sdd-review` Stage 2 | Spec loaded, ACs cross-checked, quality, security |
+
+## Agent Customization
+
+Override agent behavior per-project via `.sdd.yaml`:
+
+```yaml
+agents:
+  critic:
+    extra_instructions: "Focus on database query performance"
+  simplifier:
+    extra_instructions: "Ignore complexity in generated code files"
+```
+
+Extra instructions are injected into agent prompts when launched via `/sdd-orchestrate` or `/sdd-review`.
+
 ## Configuration
 
 Create `.sdd.yaml` in your project root:
 
 ```yaml
+project_name: my-project  # used in /sdd-context output
+spec_dir: specs  # where specs live (default: specs)
+test_dir: tests  # where tests live (auto-detected if not set)
 verbosity: standard  # minimal | standard | verbose
 enabled: true
 mode: dev  # dev | review | research
 compaction_threshold: 50  # tool invocations before suggesting /compact
+
+agents:
+  critic:
+    extra_instructions: "Focus on database query performance"
+  simplifier:
+    extra_instructions: "Ignore complexity in generated code files"
 
 guardrails:
   pre-implementation:
@@ -147,6 +184,10 @@ specify → design → implement → verify → review
 ```
 
 Each phase activates relevant skills and agents. Set phase with `/sdd-phase <name>`.
+
+## Autopilot Architecture
+
+The `/sdd-autopilot` command uses a step-file architecture. Each phase is defined in a separate file under `commands/sdd-autopilot/` (step-1 through step-5). The main command file acts as a sequential dispatcher that loads each step only when ready to execute it.
 
 ## Troubleshooting
 

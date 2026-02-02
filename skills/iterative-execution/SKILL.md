@@ -91,3 +91,4 @@ See: `references/loop-patterns.md`
 See: `references/completion-criteria.md`
 See: `references/review-prompts.md`
 See: `references/retrieval-pattern.md`
+See: `references/file-discovery.md`
