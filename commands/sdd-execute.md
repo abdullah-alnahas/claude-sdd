@@ -1,7 +1,7 @@
 ---
 name: sdd-execute
 description: Start an iterative execution loop — implement with TDD, verify against spec, fix gaps, repeat
-argument-hint: "[--max-iterations <n>] [--criteria <description>]"
+argument-hint: "[--plan-first] [--max-iterations <n>] [--criteria <description>] [description]"
 allowed-tools:
   - Read
   - Write
@@ -19,8 +19,27 @@ Start a disciplined iterative execution loop for the current spec or task. Imple
 ## Usage
 
 - `/sdd-execute` — Execute against the current spec/task
+- `/sdd-execute <description>` — Start from a description (generates spec first)
+- `/sdd-execute --plan-first <description>` — Consolidated planning mode (2 review points instead of 5)
 - `/sdd-execute --max-iterations <n>` — Set max outer loop iterations (default: 10)
 - `/sdd-execute --criteria "<description>"` — Override completion criteria
+
+## Plan-First Mode
+
+When `--plan-first` is used:
+
+1. **Generate all planning docs with minimal pauses**:
+   - proposal.md + behavior-spec.md → **pause for spec review**
+   - architecture.md + roadmap.md → **pause for design review**
+
+2. **After design approval, begin implementation**
+
+This reduces 5 pause points to 2 while preserving course-correction opportunities. Use when:
+- You have a clear idea and want to move faster
+- The feature is well-understood
+- You trust the initial planning
+
+Standard mode (without `--plan-first`) pauses after each document for maximum feedback.
 
 ## Behavior
 

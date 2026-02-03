@@ -26,21 +26,37 @@ You have access to SDD (Spec-Driven Development) skills that enforce development
 
 ## Command Catalog
 
-| Command | Phase | Required | Description |
-|---------|-------|----------|-------------|
-| `/sdd-status` | any | no | What exists, what's next |
-| `/sdd-adopt` | specify | yes (new) | Adopt existing project |
-| `/sdd-autopilot` | all | no | Full autonomous lifecycle |
-| `/sdd-execute` | implement | yes | TDD execution loop |
-| `/sdd-verify` | verify | yes | Automated checks |
-| `/sdd-review` | review | yes | Agent-based review |
-| `/sdd-orchestrate` | any | no | Custom agent pipelines |
-| `/sdd-track` | any | no | Task tracking |
-| `/sdd-context` | any | no | Project context generator |
-| `/sdd-phase` | any | no | Show/set phase |
-| `/sdd-mode` | any | no | Switch context mode |
-| `/sdd-guardrails` | any | no | Guardrail status |
-| `/sdd-yolo` | any | no | Disable guardrails |
+### Essential Commands (Start Here)
+
+| Command | Description |
+|---------|-------------|
+| `/sdd-onboard` | Interactive tutorial — explains SDD concepts |
+| `/sdd-status` | What exists, what's missing, what to do next |
+| `/sdd-init` | Setup wizard — generates .sdd.yaml |
+| `/sdd-execute` | TDD execution loop (the main workflow) |
+| `/sdd-verify` | Automated checks — build, types, lint, tests |
+
+### Standard Commands
+
+| Command | Description |
+|---------|-------------|
+| `/sdd-phase` | Show/set development phase |
+| `/sdd-mode` | Switch context mode (dev/review/research) |
+| `/sdd-review` | Agent-based code review |
+| `/sdd-track` | Task tracking via status.yaml |
+| `/sdd-guardrails` | Guardrail status/toggle |
+| `/sdd-yolo` | Disable guardrails (escape hatch) |
+| `/sdd-analyze` | Cross-artifact consistency checker (no LLM) |
+| `/sdd-clarify` | Structured questioning for unclear requirements |
+| `/sdd-checklist` | Generate custom validation checklists |
+
+### Advanced Commands
+
+| Command | Description |
+|---------|-------------|
+| `/sdd-orchestrate` | Custom agent pipelines |
+| `/sdd-challenge` | Adversarial modes (grill, prove, elegant) |
+| `/sdd-context` | Project context generator |
 
 ## Skill Priority Order
 

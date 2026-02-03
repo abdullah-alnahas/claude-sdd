@@ -11,7 +11,7 @@
       "name": "claude-sdd",
       "source": "./",
       "description": "Spec-Driven Development discipline system — behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, iterative execution loops",
-      "version": "0.10.1",
+      "version": "0.11.0",
       "author": {
         "name": "abdullah-alnahas"
       },

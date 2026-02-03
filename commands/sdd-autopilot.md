@@ -1,6 +1,6 @@
 ---
 name: sdd-autopilot
-description: Autonomous end-to-end development — takes an app description and drives through all SDD phases (specify → design → implement → verify → review) with minimal user intervention
+description: "[DEPRECATED] Use /sdd-execute --auto instead. Full autonomous SDD lifecycle."
 argument-hint: "<description or path-to-app-description.md>"
 allowed-tools:
   - Read
@@ -13,6 +13,8 @@ allowed-tools:
 ---
 
 # /sdd-autopilot
+
+> **⚠️ DEPRECATED**: This command is deprecated. Use `/sdd-execute --auto <description>` instead for the same functionality with a simpler interface.
 
 Drives the full SDD lifecycle autonomously from a rough app description to verified implementation.
 

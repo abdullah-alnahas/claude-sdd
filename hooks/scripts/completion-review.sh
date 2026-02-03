@@ -22,6 +22,6 @@ fi
 
 # Output completion review reminder to stderr (shown to user)
 # The actual review is performed by Claude following the guardrails skill
-echo "SDD: Completion review triggered. Checking: spec adherence, test coverage, complexity, dead code, scope creep." >&2
+echo "→ SDD: reviewing completion (spec adherence, tests, complexity)" >&2
 
 exit 0

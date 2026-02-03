@@ -1,7 +1,8 @@
 ---
 name: sdd-explain
-description: Generate explanations, ASCII diagrams, or HTML presentations for code or concepts
+description: "[REMOVED] Ask Claude directly. Generate explanations of code."
 argument-hint: "<target> [--format text|ascii|html]"
+user_invocable: false
 allowed-tools:
   - Read
   - Glob

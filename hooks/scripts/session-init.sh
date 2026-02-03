@@ -120,5 +120,20 @@ else
   echo "SDD WARNING: context file not found at $CONTEXT_PATH" >&2
 fi
 
-echo "SDD: Session initialized — mode=$SDD_DEFAULT_MODE, guardrails active" >&2
+# Inject project constitution if it exists
+CONSTITUTION_PATH="$PROJECT_DIR/.sdd/constitution.md"
+if [ -f "$CONSTITUTION_PATH" ]; then
+  echo ""
+  echo "# Project Constitution"
+  echo ""
+  echo "The following principles govern all work in this project. Check your work against these principles."
+  echo ""
+  cat "$CONSTITUTION_PATH"
+  echo "→ SDD: constitution loaded from .sdd/constitution.md" >&2
+  if [ -n "$ENV_FILE" ]; then
+    echo "SDD_CONSTITUTION_FOUND=true" >> "$ENV_FILE"
+  fi
+fi
+
+echo "→ SDD: session ready (mode=$SDD_DEFAULT_MODE)" >&2
 exit 0

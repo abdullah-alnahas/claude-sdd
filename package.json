@@ -1,6 +1,6 @@
 {
   "name": "@abdullah-alnahas/claude-sdd",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "Spec-Driven Development discipline system for Claude Code — behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, iterative execution loops",
   "keywords": [
     "claude-code-plugin",

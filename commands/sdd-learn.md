@@ -1,7 +1,8 @@
 ---
 name: sdd-learn
-description: Capture corrections and lessons learned, updating CLAUDE.md or project notes
+description: "[REMOVED] Edit CLAUDE.md directly. Capture lessons learned."
 argument-hint: "[lesson text]"
+user_invocable: false
 allowed-tools:
   - Read
   - Write

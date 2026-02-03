@@ -1,6 +1,38 @@
 # SDD — Spec-Driven Development Plugin
 
-A Claude Code plugin that enforces disciplined software development: behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, and iterative execution loops.
+A Claude Code plugin that enforces disciplined software development through behavioral guardrails, spec-first development, and TDD enforcement.
+
+## Quick Start
+
+**What do you want to do?**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    SDD Quick Start                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  "I'm new to SDD"                                           │
+│      └── Run: /sdd-onboard                                  │
+│          (Interactive tutorial explains everything)         │
+│                                                             │
+│  "I have an existing project"                               │
+│      └── Run: /sdd-status                                   │
+│          Then: /sdd-init (if not configured)                │
+│                                                             │
+│  "I want to build something new"                            │
+│      └── Run: /sdd-execute <description>                    │
+│          (Guides you through spec → design → implement)     │
+│                                                             │
+│  "I want to build fast (fewer review stops)"                │
+│      └── Run: /sdd-execute --plan-first <description>       │
+│          (2 review points instead of 5)                     │
+│                                                             │
+│  "I just want to code without guardrails"                   │
+│      └── Run: /sdd-yolo                                     │
+│          (Disables all checks for this session)             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## Installation
 
@@ -52,21 +84,44 @@ Profile-first discipline for performance work. Defends against convenience bias 
 
 ## Commands
 
+### Essential (start here)
+
 | Command | Purpose |
 |---------|---------|
-| `/sdd-guardrails` | Show/toggle guardrail status |
-| `/sdd-yolo` | Disable all guardrails (auto-clears next session) |
+| `/sdd-onboard` | Interactive tutorial — explains SDD concepts before configuration |
+| `/sdd-status` | Show project state — what exists, what's missing, what's next |
+| `/sdd-init` | Setup wizard — generates `.sdd.yaml` (use `/sdd-onboard` if new) |
+| `/sdd-execute` | Start iterative execution loop (spec → design → implement → verify) |
+| `/sdd-verify` | Run automated checks — build, types, lint, tests |
+
+### Standard
+
+| Command | Purpose |
+|---------|---------|
 | `/sdd-phase` | Show/set development phase |
 | `/sdd-mode` | Switch context mode (dev/review/research) |
-| `/sdd-review` | Two-stage review — spec compliance then code quality |
-| `/sdd-verify` | Automated checks — build, types, lint, tests, security scans |
-| `/sdd-orchestrate` | Agent pipelines — feature, bugfix, refactor, security, or custom |
-| `/sdd-adopt` | Adopt an existing project into SDD |
-| `/sdd-execute` | Start iterative execution loop against a spec |
-| `/sdd-autopilot` | Full autonomous lifecycle: specify → design → implement → verify → review |
-| `/sdd-status` | Show project SDD status — what exists, what's missing, what's next |
+| `/sdd-review` | Two-stage agent review — spec compliance then code quality |
 | `/sdd-track` | Lightweight task tracking via status.yaml |
+| `/sdd-guardrails` | Show/toggle guardrail status |
+| `/sdd-yolo` | Disable all guardrails (auto-clears next session) |
+| `/sdd-analyze` | Cross-artifact consistency checker (no LLM, fast) |
+| `/sdd-clarify` | Structured questioning for underspecified requirements |
+| `/sdd-checklist` | Generate custom validation checklists |
+
+### Advanced
+
+| Command | Purpose |
+|---------|---------|
+| `/sdd-orchestrate` | Custom agent pipelines — feature, bugfix, refactor, security |
+| `/sdd-challenge` | Adversarial modes — grill, prove, elegant |
 | `/sdd-context` | Generate LLM-optimized project context document |
+
+### Deprecated
+
+| Command | Replacement |
+|---------|-------------|
+| `/sdd-adopt` | Use `/sdd-init` instead |
+| `/sdd-autopilot` | Use `/sdd-execute --auto` instead |
 
 ## Agents
 

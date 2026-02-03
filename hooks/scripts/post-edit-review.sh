@@ -54,7 +54,7 @@ case "$FILE_PATH" in
   "$PROJECT_DIR/"*|"$PROJECT_DIR") ;; # Inside project, OK
   /*)
     # Exit 0 with warning — blocking cross-project edits can prevent legitimate work
-    echo "SDD SCOPE WARNING: Edit to file outside project directory: $FILE_PATH" >&2
+    echo "→ SDD: scope warning — edit outside project: $FILE_PATH" >&2
     exit 0
     ;;
 esac
@@ -65,7 +65,7 @@ SCOPE_THRESHOLD="${SDD_SCOPE_FILE_THRESHOLD:-10}"
 if command -v git &>/dev/null && [ -d "$PROJECT_DIR/.git" ]; then
   MODIFIED_COUNT=$(cd "$PROJECT_DIR" && git diff --name-only 2>/dev/null | wc -l | tr -d ' ')
   if [ "$MODIFIED_COUNT" -gt "$SCOPE_THRESHOLD" ]; then
-    echo "SDD SCOPE WARNING: $MODIFIED_COUNT files modified (threshold: $SCOPE_THRESHOLD) — possible scope creep. Review changes with 'git diff --stat'" >&2
+    echo "→ SDD: scope warning — $MODIFIED_COUNT files modified (limit: $SCOPE_THRESHOLD)" >&2
     exit 0
   fi
 fi

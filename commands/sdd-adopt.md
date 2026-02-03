@@ -1,6 +1,6 @@
 ---
 name: sdd-adopt
-description: Adopt an existing project into the SDD discipline system
+description: "[DEPRECATED] Use /sdd-init instead. Adopt an existing project into SDD."
 allowed-tools:
   - Read
   - Write
@@ -10,6 +10,8 @@ allowed-tools:
 ---
 
 # /sdd-adopt
+
+> **⚠️ DEPRECATED**: This command is deprecated. Use `/sdd-init` for setup, then `/sdd-status` to see project state.
 
 Scan an existing codebase, infer its structure and conventions, and wrap SDD discipline around it for future development.
 

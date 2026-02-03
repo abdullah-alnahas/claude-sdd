@@ -1,7 +1,8 @@
 ---
 name: sdd-replan
-description: Return to plan mode when implementation struggles, preserving context and passing tests
+description: "[REMOVED] Use /sdd-phase design instead. Return to plan mode when struggling."
 argument-hint: "[problem description]"
+user_invocable: false
 allowed-tools:
   - Read
   - Glob

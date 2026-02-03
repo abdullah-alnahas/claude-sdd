@@ -23,7 +23,7 @@ echo "$COUNT" > "$COUNTER_FILE"
 
 # Check threshold
 if [ "$COUNT" -ge "$THRESHOLD" ]; then
-  echo "SDD: $COUNT tool invocations since last compaction suggestion. Consider running /compact to free context window space. Key information to preserve: current task, spec criteria, files modified, test status." >&2
+  echo "→ SDD: $COUNT tool calls — consider /compact (preserve: task, spec, files, tests)" >&2
   # Reset counter after suggesting
   echo "0" > "$COUNTER_FILE"
 fi

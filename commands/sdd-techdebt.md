@@ -1,7 +1,8 @@
 ---
 name: sdd-techdebt
-description: Scan for duplicated code, dead code, TODO/FIXME comments, and long functions
+description: "[REMOVED] Use /sdd-review with techdebt focus. Scan for technical debt."
 argument-hint: "[path] [--fix]"
+user_invocable: false
 allowed-tools:
   - Read
   - Grep
