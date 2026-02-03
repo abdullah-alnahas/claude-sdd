@@ -51,8 +51,9 @@
         "matcher": "",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "Before finalizing, perform the SDD completion review from the guardrails skill (spec adherence, test coverage, complexity audit, dead code check, scope creep check, conceptual error scan). Report findings concisely. If GUARDRAILS_DISABLED=true or SDD_MODE=research, skip."
+            "type": "command",
+            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/scripts/completion-review.sh\"",
+            "timeout": 5
           }
         ]
       }
