@@ -179,7 +179,7 @@ done
 section "Manifest"
 # ─────────────────────────────────────────────
 
-warn "manifest.yaml exists" test -f "$PLUGIN_DIR/manifest.yaml"
+warn "No legacy manifest.yaml" test ! -f "$PLUGIN_DIR/manifest.yaml"
 
 # ─────────────────────────────────────────────
 section "Autopilot Steps"

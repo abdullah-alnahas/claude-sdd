@@ -2,6 +2,11 @@
 name: sdd-init
 description: Interactive setup wizard — generates .sdd.yaml configuration. New users should try /sdd-onboard first.
 user_invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - AskUserQuestion
 ---
 
 # /sdd-init

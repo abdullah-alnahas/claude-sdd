@@ -40,7 +40,23 @@ Specify agents as a comma-separated list:
 /sdd-orchestrate custom critic,simplifier,performance-reviewer
 ```
 
-Available agents: `critic`, `simplifier`, `spec-compliance`, `security-reviewer`, `performance-reviewer`, `planner`
+Available built-in agents: `critic`, `simplifier`, `spec-compliance`, `security-reviewer`, `performance-reviewer`, `planner`
+
+### Using Plugin Agents
+
+Registered plugin agents (from `.sdd-plugins.json`) can be included in custom pipelines using `<plugin>:<agent>` notation:
+
+```
+/sdd-orchestrate custom critic,pr-review-toolkit:silent-failure-hunter,simplifier
+```
+
+To see available plugin agents, use `/sdd-plugin list`.
+
+When a plugin agent is referenced in a pipeline:
+1. Look up the plugin in `.sdd-plugins.json`
+2. Read the agent definition from the plugin's `agents/` directory
+3. Launch it using the Task tool with the same handoff format as built-in agents
+4. The plugin agent receives the same pipeline context (previous findings, position, etc.)
 
 ## Handoff Format
 
@@ -100,6 +116,15 @@ Your task: <agent's standard task>
 Output your findings in the structured handoff format.
 ```
 
+## Agent Resolution Order
+
+When resolving an agent name in a pipeline:
+
+1. **Built-in agents**: Check SDD's `agents/` directory first
+2. **Plugin agents**: If the name contains `:`, look up `<plugin>:<agent>` in `.sdd-plugins.json` and load from the plugin's `agents/` directory
+3. **Ambiguous names**: If a bare name matches both a built-in and plugin agent, prefer the built-in. Use `<plugin>:<agent>` notation to explicitly select the plugin agent.
+
 ## References
 
 See agent definitions in `agents/` for each agent's review standards and output format.
+See `/sdd-plugin list` for registered plugin agents.

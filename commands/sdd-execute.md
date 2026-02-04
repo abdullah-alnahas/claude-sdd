@@ -1,7 +1,7 @@
 ---
 name: sdd-execute
 description: Start an iterative execution loop — implement with TDD, verify against spec, fix gaps, repeat
-argument-hint: "[--plan-first] [--max-iterations <n>] [--criteria <description>] [description]"
+argument-hint: "[--plan-first] [--max-iterations <n>] [--criteria <description>] [--plugins=ask|auto|off] [description]"
 allowed-tools:
   - Read
   - Write
@@ -23,6 +23,9 @@ Start a disciplined iterative execution loop for the current spec or task. Imple
 - `/sdd-execute --plan-first <description>` — Consolidated planning mode (2 review points instead of 5)
 - `/sdd-execute --max-iterations <n>` — Set max outer loop iterations (default: 10)
 - `/sdd-execute --criteria "<description>"` — Override completion criteria
+- `/sdd-execute --plugins=ask` — Show registered plugin agents, ask which to include in verification
+- `/sdd-execute --plugins=auto` — Automatically include all registered plugin agents
+- `/sdd-execute --plugins=off` — Don't use plugin agents (default)
 
 ## Plan-First Mode
 
@@ -59,7 +62,21 @@ The loop uses all available verification tools:
 1. Test runners (detected from project — jest, pytest, cargo test, etc.)
 2. Type checkers / linters (tsc, eslint, mypy, clippy, etc.)
 3. SDD agents (critic, spec-compliance, security-reviewer)
-4. External tools (any MCP servers or plugins the user has configured)
+4. **Registered plugin agents** (from `.sdd-plugins.json`, controlled by `--plugins` flag)
+5. External tools (any MCP servers or plugins the user has configured)
+
+### Plugin Agent Integration
+
+When `--plugins` is `ask` or `auto`:
+
+1. Read `.sdd-plugins.json` from the project root
+2. Collect all registered plugin agents
+3. **ask mode**: Present the list of available plugin agents and let the user select which to include
+4. **auto mode**: Include all registered plugin agents automatically
+5. During the verification step (3c), run selected plugin agents after SDD's built-in agents
+6. Plugin agent findings are included in gap analysis
+
+Plugin agents use the same handoff format as SDD agents. If a plugin agent fails, treat it as a verification gap (same as a built-in agent failure).
 
 ## Output Format
 
