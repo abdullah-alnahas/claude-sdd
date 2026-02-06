@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "plugins": {
+    "claude-sdd": {
+      "source": ".",
+      "path": "/home/abdullah/Documents/hdd/coding-guardrails/sdd",
+      "version": "0.12.0",
+      "description": "Spec-Driven Development discipline system — behavioral guardrails, spec-first development, architecture awareness, TDD enforcement, iterative execution loops",
+      "agents": [
+        "critic",
+        "performance-reviewer",
+        "planner",
+        "security-reviewer",
+        "simplifier",
+        "spec-compliance"
+      ],
+      "commands": [
+        "sdd-adopt",
+        "sdd-analyze",
+        "sdd-autopilot",
+        "sdd-challenge",
+        "sdd-checklist",
+        "sdd-clarify",
+        "sdd-context",
+        "sdd-execute",
+        "sdd-explain",
+        "sdd-guardrails",
+        "sdd-init",
+        "sdd-learn",
+        "sdd-mode",
+        "sdd-onboard",
+        "sdd-orchestrate",
+        "sdd-phase",
+        "sdd-plugin",
+        "sdd-replan",
+        "sdd-review",
+        "sdd-status",
+        "sdd-techdebt",
+        "sdd-track",
+        "sdd-verify",
+        "sdd-yolo"
+      ],
+      "skills": [
+        "architecture-aware",
+        "guardrails",
+        "iterative-execution",
+        "performance-optimization",
+        "spec-first",
+        "tdd-discipline",
+        "using-sdd"
+      ],
+      "registered_at": "2026-02-07T00:00:00Z",
+      "last_synced": "2026-02-07T00:00:00Z"
+    }
+  }
+}

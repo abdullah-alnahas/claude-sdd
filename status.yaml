@@ -1,0 +1,54 @@
+# SDD Task Tracking
+# Updated: 2026-02-07
+
+project: claude-sdd
+version: 0.12.0
+phase: implement
+
+completed:
+  - id: 1
+    title: "Core plugin structure (hooks, skills, agents, commands)"
+    version: "0.10.0"
+
+  - id: 2
+    title: "Spec-Kit & OpenSpec enhancements (analyze, clarify, onboard, checklist)"
+    version: "0.11.0"
+
+  - id: 3
+    title: "Plugin management — /sdd-plugin command and cross-plugin integration"
+    version: "0.12.0"
+
+  - id: 4
+    title: "Root specs — stack.md, architecture.md, roadmap.md"
+    version: "0.12.0"
+
+  - id: 5
+    title: "Test suite — 6 test files, 468 assertions, all passing"
+    version: "0.12.0"
+
+  - id: 6
+    title: "Plugin registry — .sdd-plugins.json with self-registration"
+    version: "0.12.0"
+
+  - id: 7
+    title: "Validation fixes — sdd-init allowed-tools, manifest.yaml check"
+    version: "0.12.0"
+
+in_progress: []
+
+backlog:
+  - id: 8
+    title: "CI pipeline for automated validation on push"
+    priority: high
+
+  - id: 9
+    title: "Integration tests (full workflow: init → execute → review)"
+    priority: high
+
+  - id: 10
+    title: "Plugin dependency declaration"
+    priority: medium
+
+  - id: 11
+    title: "Plugin agent discovery in named pipelines"
+    priority: medium
